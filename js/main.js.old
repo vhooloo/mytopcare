@@ -1,0 +1,117 @@
+$(function(){
+    var cardHeight = 0;
+    
+    
+    function _setCardHeight(){
+        
+        $(".subpage-box").each( function(){
+            var current_height = $(this).height();
+            
+            cardHeight = ( current_height > cardHeight) ? current_height : cardHeight;
+            
+        });
+        $(".subpage-box").each( function(){
+            if( $(this).height() < cardHeight ){
+                $(this).height( cardHeight );   
+            }
+        });
+
+        
+    }
+    
+    function _setNavStyle(){
+        $("menu-main-menu > li > a").each( function(){
+            var text = $(this).html();
+            
+            if( $(this).contains("for") ){
+               
+            }
+        });
+    }
+    
+    _setNavStyle();
+    _setCardHeight();
+    
+});
+
+$(document).ready( function(){
+    // Form fn
+    $('#utd-calculator').on("submit", function(e){
+        var opiates = false;
+        if( $("#opiates").is(":checked") ){
+            opiates = true;
+        }
+        if( $("input:checkbox:checked") ){
+            e.preventDefault();
+            
+            
+            $("#utd-calculator tr").each( function(){
+                if( $(this).find("input:checkbox:checked") ){
+                    
+                    var drugName = $(this).find('.column-1 input').val(),
+                        taking = $(this).find('.column-1 input').prop('checked'),
+                        result = $(this).find(".prescribed").prop('checked'),
+                        pos ='Should be positive',
+                        shouldbe = '<span class="light-blue">May be positive</span>',
+                        output = '',
+                        green = 'rgb(0, 176,80)',
+                        red = 'rgb(255,0,0)';
+                    if( opiates && !taking ){
+                        if( result ){
+                            if( drugName == 'Codeine' ||
+                                drugName == 'Morphine' ){
+                                output = '<span style="color:'+ green + ' ">Expected</span> Should be positive';
+                            }
+                            if( drugName == 'Hydrocodone' ||
+                                drugName == 'Hydromorphone' ||
+                                drugName == 'Oxycodone' ){
+                                    output = '<span style="color:'+ red + ' ">Possible:</span> May be positive';
+                            }
+                        }
+                    }else{
+                        
+                        if(taking && result ){
+                            output = '<span style="color:'+ green + ' ">Expected</span>';  
+                        }else if( taking && !result){
+                            output = '<span style="color:'+ red + ' ">Unexpected:</span> 1. Determine if patient taking medicine, 2. Consider diversion';
+                        }else if( !taking && result ){
+                            output = '<span style="color:'+ red + ' ">Unexpected:</span> 1. Consider False Positive, 2. Consider Misuse';
+                        }else{
+                            return true;    
+                        }
+                        if( drugName == 'Buprenorphine' || 
+                            drugName == 'Codeine' || 
+                            drugName == 'Methadone' || 
+                            drugName == 'Morphine' || 
+                            drugName == 'Oxycodone' || 
+                            drugName == 'Oxymorphone' ){
+                            
+                            output += " ";   
+                        
+                        }
+                        if( drugName == 'Hydrocodone' || 
+                            drugName == 'Hydromorphone' || 
+                            drugName == 'Oxycodone' || 
+                            drugName == 'Morphine' ){
+                        
+                            output += " ";
+                        
+                        }
+                    }
+                    
+                    $("#" + drugName).removeClass('disabled').find('.result-1').html(output);
+                }
+            });
+            $(".info-box.disabled").fadeIn().removeClass("disabled");
+        
+        }
+    });
+    $("#reset").on('click', function(){
+        $(".result-table tbody tr").each(function(){
+            if( !$(this).hasClass("disabled") ){
+                $(this).addClass("disabled");
+                $(this).html("");
+            }
+        });
+    });
+});
