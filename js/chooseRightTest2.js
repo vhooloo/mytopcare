@@ -16,11 +16,6 @@ var drugs=[
                 localdata: drugs,
                 datatype: "array"
             };
-            var dataAdapter = new $.jqx.dataAdapter(source, {
-                downloadComplete: function (drugs, status, xhr) { },
-                loadComplete: function (drugs) { },
-                loadError: function (xhr, status, error) { }
-            });
 			
 			var cellclass = function (row, columnfield, value) {
 									console.log(columnfield);
@@ -28,6 +23,12 @@ var drugs=[
                 
 				};
 				
+				
+            var dataAdapter = new $.jqx.dataAdapter(source, {
+                downloadComplete: function (drugs, status, xhr) { },
+                loadComplete: function (drugs) { },
+                loadError: function (xhr, status, error) { }
+            });
             $("#jqxgrid").jqxGrid(
             {
                 width: 1100,
@@ -41,10 +42,10 @@ var drugs=[
                 autoheight: true,				
                 altRows: true,				
                 columns: [
-					{ text: 'Drug', datafield: 'name', width: 180, cellclassname: cellclass },	
-					{ text: 'Test', columngroup: 'Screening',datafield: 'screeningTest', width: 100, cellclassname: cellclass  },					
+					{ text: 'Drug', datafield: 'name', width: 180 },	
+					{ text: 'Test', columngroup: 'Screening',datafield: 'screeningTest', width: 100, cellclassname: cellclass },					
 					{ text: 'Expected', columngroup: 'Screening',datafield: 'screeningExpected', width: 80 },
-					{ text: 'Unexpected', columngroup: 'Screening',datafield: 'screeningUnexpected', width: 80, cellclassname: cellclass },
+					{ text: 'Unexpected', columngroup: 'Screening',datafield: 'screeningUnexpected', width: 80},
 					{ text: 'Posible False Positives<br/>(Immunoassay only)', columngroup: 'Screening',datafield: 'falsePositive', width: 180 },					
 					{ text: 'Expected', columngroup: 'Confirmatory',datafield: 'confirmatoryExpected', width: 110 },
 					{ text: 'Drug (Urine <br/>Metabolite to test for)', columngroup: 'Confirmatory',datafield: 'confirmatoryDrug', width: 180},		
@@ -66,8 +67,6 @@ var drugs=[
                 var oldwidth = event.args.oldwidth;
                 $("#eventlog").text("Column: " + column + ", " + "New Width: " + newwidth + ", Old Width: " + oldwidth);
             });		
-			
-			   
         });
 
 

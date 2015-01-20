@@ -22,7 +22,7 @@ Template Name: interpret_opiates
 
                                 <div class="">									
 								<h1><b><?php the_title(); ?></b></h1>
-								<span style="position: absolute; right:50px;Top:40px;"><a href="http://mytopcare.org/udt-calculator/" title="Urine Drug Test (UDT) Decision Support1">Return to UDT Decision Support</a></span>								
+								<span style="position: absolute; right:50px;Top:50px;"><a href="http://mytopcare.org/udt-calculator/" title="Urine Drug Test (UDT) Decision Support1">Return to UDT Decision Support</a></span>								
 								</div>
 
                             <!--</header> <!-- end article header -->
@@ -109,7 +109,9 @@ Template Name: interpret_opiates
 									</table>
 									</div></div>
 
-									<b>Step 3: Click Interpret and Review Recommendations</b> 
+								
+									
+									<b>Step 3: Click Interpret and Review Recommendations based on Opiates Test or Medication and Drugs Taken</b> 
 									<br/>
 									
 									<div class="row">
@@ -118,15 +120,19 @@ Template Name: interpret_opiates
 									<button type="reset" id="run" name="run"class="btn btn-default">Interpret</button></span>
 									</div></div>
 									
+									<div class="row">
+									<div class="col-md-6">
+									
 									<div id='results' class="clearfix hidden">
+									Interpretation based on Opiates Test Results
                                         <table id='opiatesDrugs' class="tablepress">	
-                                            <thead>
+                                            <thead style='height: 60px;'>
                                                 <tr class="odd">
-                                                    <th style='width: 200px;'><div>Opiates Test Results </div></th>
+                                                    <th style='width: 100px;'><div>Opiates Test Results </div></th>
 													<!--<th class="column-3" style='min-width: 160px;'>Inputs</th>-->
-                                                    <th class="column-3" style='min-width: 240px;'>Interpretation</th>
+                                                    <th class="column-3" style='width: 120px;'>Interpretation</th>
 													<!--th class="column-3" style='min-width: 480px;'>Interpretation if<br/>NOT taking drug</th-->
-                                                    <th class="column-3" style='min-width: 240px;'>Additional Information</th>
+                                                    <th class="column-3" style='width: 120px;'>Additional Information</th>
                                                 </tr>												
                                             </thead>										
                                             <tbody class="row-hover">	
@@ -315,20 +321,24 @@ Template Name: interpret_opiates
                                                 </tr>-->
                                             </tbody>
                                         </table>
-									</div>
+									</div></div>
+									
+									<div class="col-md-6">
+									
 									<div id='results-drugs' class="clearfix hidden">
+									Interpretation based on Medication or Drugs Taken
                                         <table id='opiatesDrugsTaken' class="tablepress">	
-                                            <thead>
+                                            <thead style='height: 60px;'>
                                                 <tr class="odd">
-                                                    <th style='width: 200px;'><div>Medications or Drugs taken</div></th>
+                                                    <th style='width: 100px;'><div>Medications/Drugs taken</div></th>
 													<!--<th class="column-3" style='min-width: 160px;'>Inputs</th>-->
-                                                    <th class="column-3" style='min-width: 240px;'>Interpretation</th>
+                                                    <th class="column-3" style='width: 120px;'>Interpretation</th>
 													<!--th class="column-3" style='min-width: 480px;'>Interpretation if<br/>NOT taking drug</th-->
-                                                    <th class="column-3" style='min-width: 240px;'>Additional Information</th>
+                                                    <th class="column-3" style='width: 120px;'>Additional Information</th>
                                                 </tr>												
                                             </thead>										
                                             <tbody class="row-hover">
-											<tr class="odd hidden" id="codeine">
+											<tr class="even hidden" id="codeine">
                                                     <td class="column-1">Codeine</td>
                                                     <!--<td class="column-2">
 														<div class="take"><p>Taking Drug</p>
@@ -355,7 +365,7 @@ Template Name: interpret_opiates
 													</td>-->
                                                     <td class='result-1'></td>
 													<td class='result-2'></td>
-                                                    <td class='text-right'class="even disabled"></td>
+                                                    <!--td class='text-right'class="even disabled"></td-->
                                                 </tr>		
 											 <tr class="even hidden" id="hydrocod">
                                                     <td class="column-1">Hydrocodone</td>
@@ -415,9 +425,10 @@ Template Name: interpret_opiates
                                                 </tr>	
 									 </tbody>
 									 </table>
-									</div>
+									</div></div></div>
+									
 					 <div class="col-md-6">
-                    <div class="subpage-box dropshadow hidden" id="Confirmatory"> <!--style = "height:200px;"-->
+                    <div class="subpage-box dropshadow hidden" id="Confirmatory" style = "max-height:170px;">
                         <div class="subpage-box-header">
                             <h3>
 							These medications are not testable using a UDT

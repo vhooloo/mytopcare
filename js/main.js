@@ -26,7 +26,7 @@ jQuery(function($){
     }
     
     _setNavStyle();
-    //_setCardHeight();
+    _setCardHeight();
 });
 /*
 $('#accordion .action-button').hover(
