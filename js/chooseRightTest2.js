@@ -17,13 +17,44 @@ var drugs=[
                 datatype: "array"
             };
 			
-			var cellclass = function (row, columnfield, value) {
+			var cellclasszindex = function (row, columnfield, value) {
 									console.log(columnfield);
-                                   return 'borderClass';
+                                   return 'zindexClass';
                 
 				};
-				
-				
+			var cellclassleft = function (row, columnfield, value) {
+									console.log(columnfield);
+                                   return 'borderleftClass';
+                
+				};
+			var cellclassright = function (row, columnfield, value) {
+									console.log(columnfield);
+                                   return 'borderrightClass';
+                
+				};	
+			var cellclassnoright = function (row, columnfield, value) {
+									console.log(columnfield);
+                                   return 'noborderrightClass';
+                
+				};	
+			var columnsrenderer = function (value) {
+			    if (value == 'Screening')
+					return '<div id="map" style="font-weight:bold;text-align:center;">' + value + '</div>';
+				else
+					return '<div id="map1" style="font-weight:bold;text-align:center;">' + value + '</div>';
+			};
+			
+			var tooltiprenderer = function (element) {
+			 console.log($(element).parent().html());
+			 console.log($(element).attr('style'));
+			 //$(element).parent().css( "background", "yellow" );
+			 $(element).css("z-index", "999999");
+			 $(element).parent().css( "border-style", "solid" );
+			 $(element).parent().css( "border-color", "green green grey green" );
+			 $(element).parent().css( "border-width", "2px 2px 1px 2px" );
+			 
+			};
+			
             var dataAdapter = new $.jqx.dataAdapter(source, {
                 downloadComplete: function (drugs, status, xhr) { },
                 loadComplete: function (drugs) { },
@@ -42,19 +73,19 @@ var drugs=[
                 autoheight: true,				
                 altRows: true,				
                 columns: [
-					{ text: 'Drug', datafield: 'name', width: 180 },	
-					{ text: 'Test', columngroup: 'Screening',datafield: 'screeningTest', width: 100, cellclassname: cellclass },					
+					{ text: 'Drug', datafield: 'name', width: 180}, //, cellclassname: cellclassnoright },	
+					{ text: 'Test', columngroup: 'Screening',datafield: 'screeningTest', width: 100}, //, cellclassname: cellclasszindex, rendered:tooltiprenderer },					
 					{ text: 'Expected', columngroup: 'Screening',datafield: 'screeningExpected', width: 80 },
 					{ text: 'Unexpected', columngroup: 'Screening',datafield: 'screeningUnexpected', width: 80},
-					{ text: 'Posible False Positives<br/>(Immunoassay only)', columngroup: 'Screening',datafield: 'falsePositive', width: 180 },					
-					{ text: 'Expected', columngroup: 'Confirmatory',datafield: 'confirmatoryExpected', width: 110 },
-					{ text: 'Drug (Urine <br/>Metabolite to test for)', columngroup: 'Confirmatory',datafield: 'confirmatoryDrug', width: 180},		
+					{ text: 'Posible False Positives<br/>(Immunoassay only)', columngroup: 'Screening',datafield: 'falsePositive', width: 180}, //, cellclassname: cellclassright },					
+					{ text: 'Expected', columngroup: 'Confirmatory',datafield: 'confirmatoryExpected', width: 110}, //, cellclassname: cellclasszindex },
+					{ text: 'Drug (Urine <br/>Metabolite to test for)', columngroup: 'Confirmatory',datafield: 'confirmatoryDrug', width: 180}, //, cellclassname: cellclassright},		
 					{ text: 'Common <br/>Detection Range', datafield: 'detectionRange',width: 110 },
 					{ text: 'Category', datafield: 'category', width: 80 } 
 				],
 				columngroups: [
-                    { text: 'Screening', align: 'center', name: 'Screening' },
-					{ text: 'Confirmatory', align: 'center', name: 'Confirmatory' }
+                    { text: 'Screening', align: 'center', name: 'Screening', renderer:columnsrenderer},//  rendered:tooltiprenderer },
+					{ text: 'Confirmatory', align: 'center', name: 'Confirmatory', renderer:columnsrenderer}// ,  rendered:tooltiprenderer }
                 ]
 				//groups: ['category']
             });
@@ -67,7 +98,27 @@ var drugs=[
                 var oldwidth = event.args.oldwidth;
                 $("#eventlog").text("Column: " + column + ", " + "New Width: " + newwidth + ", Old Width: " + oldwidth);
             });		
+			
+			console.log("position is " + $("#map").offset().top);
+			$("#mydiv").css('top',  $("#map").offset().top);
+			$("#mydiv").css('left',  $("#map").offset().left-1);
+			$("#mydiv").css('height',  $("#jqxgrid").height());
+			$("#mydiv1").css('top',  $("#map1").offset().top);
+			$("#mydiv1").css('left',  $("#map1").offset().left-1);
+			$("#mydiv1").css('height',  $("#jqxgrid").height());
+			$("#mydiv").css( "visibility", "visible" );
+			$("#mydiv1").css( "visibility", "visible" );
+			$( window ).resize(function() {
+			  console.log( "Handler for .resize() called." );
+			  $("#mydiv").css('top',  $("#map").offset().top);
+				$("#mydiv").css('left',  $("#map").offset().left-1);
+				$("#mydiv1").css('top',  $("#map1").offset().top);
+			$("#mydiv1").css('left',  $("#map1").offset().left-1);
+			});
+			
         });
+
+		
 
 
 

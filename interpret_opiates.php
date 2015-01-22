@@ -50,24 +50,27 @@ Template Name: interpret_opiates
 										<!--<li class="ui-state-default" value="Amphetamine"><span>Amphetamine</span></li>
 										<li class="ui-state-default" value="Barbiturates"><span>Barbiturates</span></li>
 										<li class="ui-state-default" value="Benzodiazepines"><span>Benzodiazepines</span></li>-->
-										<!--li class="drug ui-state-default" name = "buptake" value="Buprenorphine"><span>Buprenorphine</span></li-->
+										<li class="drug ui-state-default" name = "buptake" value="Buprenorphine"><span>Buprenorphine</span></li>
 										<!--<li class="ui-state-default" value="Cocaine"><span>Cocaine</span></li>-->
 										<li class="drug ui-state-default"  name = "codeinetake" value="Codeine"><span>Codeine</span></li>
-										<!--li class="drug ui-state-default"  name = "fenttake" value="Fentanyl"><span>Fentanyl</span></li-->
+										<li class="drug ui-state-default"  name = "fenttake" value="Fentanyl"><span>Fentanyl</span></li>
 										<li class="drug ui-state-default"  name = "hydrocodtake" value="Hydrocodone"><span>Hydrocodone</span></li>
 										<li class="drug ui-state-default"  name = "hydromortake" value="Hydromorphone"><span>Hydromorphone</span></li>
 										<li class="drug ui-state-default"  name = "herointake" value="MAM6"><span>Heroin-MAM6</span></li>										
-										<!--li class="drug ui-state-default"  name = "meptake" value="Meperidine"><span>Meperidine</span></li-->
-										<!--li class="drug ui-state-default"  name = "methtake" value="Methadone"><span>Methadone</span></li>
-										<li class="drug ui-state-default"  name = "morphinetake" value="Morphine"><span>Morphine</span></li-->
+										<li class="drug ui-state-default"  name = "meptake" value="Meperidine"><span>Meperidine</span></li>
+										<li class="drug ui-state-default"  name = "methtake" value="Methadone"><span>Methadone</span></li>
+										<!--li class="drug ui-state-default"  name = "morphinetake" value="Morphine"><span>Morphine</span></li-->
 										<li class="drug ui-state-default"  name = "oxycodtake" value="Oxycodone"><span>Oxycodone</span></li>
 										<li class="drug ui-state-default"  name = "oxymorphtake" value="Oxymorphone"><span>Oxymorphone</span></li>										
 										<!--<li class="ui-state-default" value="PCP"><span>PCP</span></li>-->
 									  </ol>
 									</div>
+									<div class="row">
+									<div class="col-md-8">
 									<br/>
 									<b>Step 2: Select  Result of Opiates Test</b>
 									<br/>
+									</div></div>
 									<div class="row">
 									<div class="col-md-8">
 									
@@ -124,7 +127,8 @@ Template Name: interpret_opiates
 									<div class="col-md-6">
 									
 									<div id='results' class="clearfix hidden">
-									Interpretation based on Opiates Test Results
+									
+									<div style="font-size:18px; font-weight:bold; position:relative; top:12px"> Interpretation based on Opiates Test Results </div>
                                         <table id='opiatesDrugs' class="tablepress">	
                                             <thead style='height: 60px;'>
                                                 <tr class="odd">
@@ -195,20 +199,7 @@ Template Name: interpret_opiates
                                                     <td class='result-1' ><!--Should be positive--></td>
 													<td class='result-2' ><!--Should be positive--></td>
                                                 </tr>												
-                                                <tr class="even hidden" id="bup">
-                                                    <td class="column-1">Buprenorphine</td>
-                                                    <!--<td class="column-2">
-														<div class="take"><p>Taking Drug</p>
-															<p>
-																Y  <input type="radio" class='dst3-2' name="Buprenorphine_take" value="2">
-																N  <input type="radio" class='dst3-1' name="Buprenorphine_take" value="1">
-																Unsure<input type="radio" class='dst3-0' name="Buprenorphine_take" value="0">
-															</p>
-														</div>	
-													</td>-->
-                                                    <td class='result-1' ><!--Should be positive--></td>
-													<td class='result-2' ><!--Should be positive--></td>
-                                                </tr>
+                                                
                                                 <!--<tr class="odd hidden" id="Cocaine">
                                                     <td class="column-1">Cocaine</td>
                                                     <td class="column-2">
@@ -224,25 +215,7 @@ Template Name: interpret_opiates
 													<td class='result-2' ></td>
                                                     <td class='text-right' class="odd disabled"></td>
                                                 </tr>-->												
-                                                
-												
-                                                											
-                                               
-                                                
-                                                <tr class="odd hidden" id="meth">
-                                                    <td class="column-1">Methadone</td>
-                                                    <!--<td class="column-2">													
-														<div class="take"><p>Taking Drug</p>
-															<p>
-																Y  <input type="radio" class='dst3-2' name="Methadone_take" value="2">
-																N  <input type="radio" class='dst3-1' name="Methadone_take" value="1">
-																Unsure<input type="radio" class='dst3-0' name="Methadone_take" value="0">
-															</p>
-														</div>	
-													</td>-->														
-                                                    <td class='result-1'></td>
-													<td class='result-2'></td>
-                                                </tr>
+
                                                 <tr class="even hidden" id="Morphine">
                                                     <td class="column-1">Morphine</td>
                                                     <!--<td class="column-2">													
@@ -272,38 +245,9 @@ Template Name: interpret_opiates
                                                     <td class='result-1'></td>
 													<td class='result-2'></td>
                                                 </tr>
-												<tr class="even hidden" id="fent">
-                                                    <td class="column-1">Fentanyl</td>
-                                                    <!--<td class="column-2">
-														<div class="take"><p>Taking Drug</p>
-															<p>
-																Y  <input type="radio" class='dst3-2' name="Fentanyl_take" value="2">
-																N  <input type="radio" class='dst3-1' name="Fentanyl_take" value="1">
-																Unsure<input type="radio" class='dst3-0' name="Fentanyl_take" value="0">
-															</p>
-														</div>													
-													</td>-->
-                                                    <td class='result-1'></td>
-													<td class='result-2'></td>
-                                                </tr>
 												
-												<tr class="even  hidden" id="mep">
-                                                    <td class="column-1">Meperidine</td>
-                                                    <!--<td class="column-2">													
-														<div class="take"><p>Taking Drug</p>
-															<p>
-																Y  <input type="radio" class='dst3-2' name="Meperidine_take" value="2">
-																N  <input type="radio" class='dst3-1' name="Meperidine_take" value="1">
-																Unsure<input type="radio" class='dst3-0' name="Meperidine_take" value="0">
-															</p>
-														</div>	
-													</td>-->														
-                                                    <td class='result-1'></td>
-													<td class='result-2'></td>
-                                                    <td class='text-right' class="odd disabled"></td>
-                                                </tr>
 												
-                                               
+												
                                                 <!--<tr class="even hidden" id="PCP">
                                                     <td class="column-1">PCP</td>
                                                     <td class="column-2">													
@@ -326,7 +270,7 @@ Template Name: interpret_opiates
 									<div class="col-md-6">
 									
 									<div id='results-drugs' class="clearfix hidden">
-									Interpretation based on Medication or Drugs Taken
+									<div style="font-size:18px; font-weight:bold; position:relative; top:12px"> Interpretation based on Medication or Drugs Taken </div>
                                         <table id='opiatesDrugsTaken' class="tablepress">	
                                             <thead style='height: 60px;'>
                                                 <tr class="odd">
@@ -338,6 +282,20 @@ Template Name: interpret_opiates
                                                 </tr>												
                                             </thead>										
                                             <tbody class="row-hover">
+											<tr class="even hidden" id="bup">
+                                                    <td class="column-1">Buprenorphine</td>
+                                                    <!--<td class="column-2">
+														<div class="take"><p>Taking Drug</p>
+															<p>
+																Y  <input type="radio" class='dst3-2' name="Buprenorphine_take" value="2">
+																N  <input type="radio" class='dst3-1' name="Buprenorphine_take" value="1">
+																Unsure<input type="radio" class='dst3-0' name="Buprenorphine_take" value="0">
+															</p>
+														</div>	
+													</td>-->
+                                                    <td class='result-1' ><!--Should be positive--></td>
+													<td class='result-2' ><!--Should be positive--></td>
+                                             </tr>
 											<tr class="even hidden" id="codeine">
                                                     <td class="column-1">Codeine</td>
                                                     <!--<td class="column-2">
@@ -352,6 +310,21 @@ Template Name: interpret_opiates
                                                     <td class='result-1'></td>
 													<td class='result-2'></td>
                                                 </tr>
+												<tr class="even hidden" id="fent">
+                                                    <td class="column-1">Fentanyl</td>
+                                                    <!--<td class="column-2">
+														<div class="take"><p>Taking Drug</p>
+															<p>
+																Y  <input type="radio" class='dst3-2' name="Fentanyl_take" value="2">
+																N  <input type="radio" class='dst3-1' name="Fentanyl_take" value="1">
+																Unsure<input type="radio" class='dst3-0' name="Fentanyl_take" value="0">
+															</p>
+														</div>													
+													</td>-->
+                                                    <td class='result-1'></td>
+													<td class='result-2'></td>
+                                                </tr>
+												
 											<tr class="odd  hidden" id="heroin">
                                                     <td class="column-1">Heroin-MAM6</td>
                                                     <!--<td class="column-2">
@@ -395,6 +368,37 @@ Template Name: interpret_opiates
                                                     <td class='result-1'></td>
 													<td class='result-2'></td>
                                                 </tr>
+												
+												<tr class="even  hidden" id="mep">
+                                                    <td class="column-1">Meperidine</td>
+                                                    <!--<td class="column-2">													
+														<div class="take"><p>Taking Drug</p>
+															<p>
+																Y  <input type="radio" class='dst3-2' name="Meperidine_take" value="2">
+																N  <input type="radio" class='dst3-1' name="Meperidine_take" value="1">
+																Unsure<input type="radio" class='dst3-0' name="Meperidine_take" value="0">
+															</p>
+														</div>	
+													</td>-->														
+                                                    <td class='result-1'></td>
+													<td class='result-2'></td>
+                                                    <td class='text-right' class="odd disabled"></td>
+                                                </tr>
+											<tr class="odd hidden" id="meth">
+                                                    <td class="column-1">Methadone</td>
+                                                    <!--<td class="column-2">													
+														<div class="take"><p>Taking Drug</p>
+															<p>
+																Y  <input type="radio" class='dst3-2' name="Methadone_take" value="2">
+																N  <input type="radio" class='dst3-1' name="Methadone_take" value="1">
+																Unsure<input type="radio" class='dst3-0' name="Methadone_take" value="0">
+															</p>
+														</div>	
+													</td>-->														
+                                                    <td class='result-1'></td>
+													<td class='result-2'></td>
+                                             </tr>	
+                                               
 											 <tr class="even hidden" id="oxycod">
                                                     <td class="column-1">Oxycodone</td>
                                                     <!--<td class="column-2">													

@@ -5,21 +5,81 @@ Template Name: ChooseRightTest2
 ?>
 <?php get_header(); ?>
     <style type="text/css">
+.mydiv {
+    width: 442px;
+    height: 1050px;
+    /*padding: 10px;*/
+    border: 2px solid black;
+    margin: 0;
+position: absolute;
+visibility:hidden;
+    /*top: 300px;
+	left: 255px;*/
+	/*z-index:999888; */
+  
+}
+.mydiv1 {
+    width: 291px;
+    height: 1050px;
+    /*padding: 10px;*/
+    border: 2px solid black;
+    margin: 0;
+position: absolute;
+visibility:hidden;
+    /*top: 300px;
+	left: 255px;*/
+	/*z-index:999888; */
+  
+}
 
-        .jqx-widget .borderClass
+.jqx-widget .zindexClass
         {
-			border: 2px solid;
+			z-index:999999;
+			
+        }
+	
+        .jqx-widget .borderleftClass
+        {
+			border-style:  solid;
+			border-width: 1px 1px 1px 0px;
+			border-color: grey grey grey green;
+			margin: -1px 0px 0px 0px;
+			
+        }
+		
+		.jqx-widget .borderrightClass
+        {
+			border-style:  solid;
+			border-width: 1px 2px 1px 1px;
+			border-color: grey green grey grey;
+
+        }
+		
+		.jqx-widget .noborderrightClass
+        {
+			border-style:  solid solid solid solid;
+			border-width: 1px 2px 1px 1px;
+			border-color: grey green grey grey;
+
+        }
+		.jqx-widget .jqx-grid-cell {}
+		#contenttablejqxgrid {/*border-color: red;*/ border-color: blue;
+        }
+		/* .jqx-widget .jqx-grid-column-header, .jqx-widget .jqx-grid-group-cell {
+			border-style:  solid;
+			border-width: 0px 2px 2px 0px;
 			border-color: red;
-        }
-			.jqx-widget .jqx-grid-cell {}
-		#contenttablejqxgrid {border-color: red; border-left-color:blue;
-        }
+			border-left-color: red;
+			border-right-color: green;
+        } */
     </style>
 <div class="breadcrumb-container">
     <div class="container">
         <?php if(function_exists('dimox_breadcrumbs')) dimox_breadcrumbs(); ?>
     </div>
 </div>
+<div id="mydiv" class="mydiv"></div>
+<div id="mydiv1" class="mydiv1"></div>
 			<div id="content" class="clearfix row">
 			    <div class="container"> 
                     <div id="main" class="col col-lg-12 clearfix" role="main">
@@ -33,7 +93,7 @@ Template Name: ChooseRightTest2
 							<div class=""><h1><b><?php the_title(); ?></b></h1>
 							<span style="position: absolute; right:50px;Top:40px;"><a href="http://mytopcare.org/udt-calculator/" title="Urine Drug Test (UDT) Decision Support">Return to UDT Decision Support</a>								
 							</div>
-
+									
                             <!--</header> <!-- end article header -->
 
                             <section class="post_content clearfix calculator-container">
@@ -45,11 +105,12 @@ Template Name: ChooseRightTest2
 								<br/>
 									<!--<span><b>Click and expand the desired Category to see more details.</b></span>-->
 								<br/>								
-									<div id='jqxWidget' style="font-size: 14px; font-family: Verdana; float: left;width:100%;">
+									<div id='jqxWidget' style="font-size: 14px; font-family: Verdana; float: left;width:100%; opacity:0.7;">
 										<div id="jqxgrid" ></div>
 										<br/>
 									<span style="position: absolute; right:50px;bottom:20px;"><a href="http://mytopcare.org/udt-calculator/" title="Urine Drug Test (UDT) Decision Support">Return to UDT Decision Support</a></span><br/>									
 									</div>
+									
 								</body>
 											
                             </section> <!-- end article section -->

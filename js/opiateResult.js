@@ -205,7 +205,7 @@ jQuery(document).ready( function($){
 	var buplist = ["bup", "meth"];
 	var outerindex = buplist.length;
 	var drugname;
-	while (outerindex--) {
+	/*while (outerindex--) {
 	    drugname = buplist[outerindex];
 		ijk = risklist[drugname].length;
 		while (ijk--) {
@@ -218,7 +218,7 @@ jQuery(document).ready( function($){
 			  else { $("#"+drugname).find('.result-1').html("Expected");$("#"+drugname).css({ "color": 'green'})}
 		   } 
 		}
-	}
+	}*/
 	//definite list for opiates
 	codlist = ["codeine", "morphine", "heroin"];
 	var opiateresults = {Expected:[], Unexpected:[], Possible:[]};
@@ -302,7 +302,7 @@ jQuery(document).ready( function($){
 			$("#opiates").find('.result-2').html( "Patient not prescribed Codeine, Morphine, Oxycodone, Hydromorphone or Hydromorphone nor using Heroin, so highly unlikely UDT would be positive" )}
 	else {};
 	
-	var fentlist = ["mep", "fent"];	outerindex = fentlist.length;
+	/*var fentlist = ["mep", "fent"];	outerindex = fentlist.length;
 	
 	while (outerindex--) {
 	   drugname = fentlist[outerindex];
@@ -317,7 +317,7 @@ jQuery(document).ready( function($){
 			  else { $("#"+drugname).find('.result-1').html("Expected");$("#"+drugname).css({ "color": 'green'})}
 		   } 
 		}
-	}	
+	}	*/
 	
 	var oxylist = ["oxycod", "oxymorph"];	outerindex = oxylist.length;
 	var oxyresults = {Expected:[], Unexpected:[]};
@@ -414,12 +414,29 @@ jQuery(document).ready( function($){
 		}
 		$("#"+drugname).find('.result-2').html(  oxydiag + ". " + opiatediag );
 	}		
+	
+	
+	druglist = ["bup", "fent", "mep", "meth"];	outerindex = druglist.length;
+	
+	while (outerindex--) {
+	   drugname = druglist[outerindex];
+		
+		if (myselection[drugname+"take"] == "pos")
+		{ 
+
+		   $("#"+drugname).removeClass("hidden");
+		  $("#"+drugname).find('.result-2').html( 'Is not detectable using a Screening UDT which often includes tests for "Opiates" or "Oxycodone"' );
+		  $("#"+drugname).find('.result-1').html("If confirmation is needed, order a specific confirmatory test for this specific drug.");$("#"+drugname).css({ "color": 'orange'})
+	 
+		}
+	}		
 	//if (myselection["herointake"] == "pos")
 	//{
 	//	$("#Heroin").removeClass("hidden");	
 	//}
 		
-	$("#Confirmatory").removeClass("hidden");	
+		
+	//$("#Confirmatory").removeClass("hidden");	
 	//if ( myselection["oxytest"] == "pos" &&  myselection["oxycodtake"] == "pos") $("#Methadone").find('.result-2').html( JSON.stringify(methresults["Expected"]));
 	//else if ( myselection["oxytest"] == "pos" &&  myselection["oxycodtake"] == "neg") $("#Methadone").find('.result-2').html( JSON.stringify(methresults["Unexpected"]));
 	//else if ( myselection["oxytest"] == "neg" &&  myselection["oxycodtake"] == "pos") $("#Methadone").find('.result-2').html( JSON.stringify(methresults["Unexpected"]));
