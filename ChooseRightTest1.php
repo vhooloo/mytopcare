@@ -32,6 +32,7 @@ Template Name: ChooseRightTest1
 		/*z-index:999888; */
 	  
 	}
+	.jqx-widget-content{font-size:12px}
 }
 	@media print{
 	 .mydiv {
@@ -49,6 +50,7 @@ Template Name: ChooseRightTest1
 		display:none;
 	}
 	.navbar, .breadcrumb, .noprint, .footer{ display:none; width:0px; height:0px;}
+	.jqx-widget-content{font-size:11px}
 	}
 </style>
 <div class="breadcrumb-container">

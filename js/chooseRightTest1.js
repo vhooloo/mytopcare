@@ -6,7 +6,7 @@ var drugs=[
 {name:"Hydromorphone (Exalgo, Hydromorphone HP, Dilaudid, Palladone)",screeningTest:"Opiates by Immunoassay",screeningExpected:"Opiates - Positive",screeningUnexpected:"Opiates - Negative",confirmatoryTest:"GC/MS or LC/MS Opiates",confirmatoryExpected:"Hydromorphone",confirmatoryUnexpected:"Codeine, Morphine, Hydrocodone, Oxycodone, Oxymorphone, 6-acetyl morphine (Heroin metabolite)",falsePositives:"Poppy seeds ; dextromethorophan; diphenhydramine; fluoroquinolones; quinine, rifampin",detectionRange:"1 to 4 days after use",category:"Semi-Synthetic Opioid"},
 {name:"Meperidine (Demerol, Mepergan)",screeningTest:"Not detected by screening test. Use confirmatory test.",screeningExpected:"Not detected by screening test. Use confirmatory test.",screeningUnexpected:"Opiates - Positive by Immunoassay",confirmatoryTest:"GC/MS or LC/MS Meperidine",confirmatoryExpected:"Normeperidine, possibly Meperidine",confirmatoryUnexpected:"Codeine, Morphine, Hydrocodone, Oxycodone, Oxymorphone, 6-acetyl morphine (Heroin metabolite)",falsePositives:"Diphenhydramine; doxylamine; clomipramine;<br/>chlorpromazine; quitiapine; thioridazine; tramadol; verapamil;",detectionRange:"Meperidine: <1 day; Normeperidine: upto 2 days",category:"Synthetic Opioid"},
 {name:"Methadone (Dolophine , Methadose®)",screeningTest:"Methadone Immunoassay",screeningExpected:"Methadone - Positive",screeningUnexpected:"Opiates - Positive",confirmatoryTest:"GC/MS or LC/MS Methadone",confirmatoryExpected:"Methadone and EDDP",confirmatoryUnexpected:"Methadone only",falsePositives:"clomipramine;<br/>chlorpromazine; Diphenhydramine; doxylamine; ibuprofen;quitiapine; thioridazine; verapamil;",detectionRange:"Upto 10 days; Detection times of methadone in urine can be variable: patients on lower doses (<40mg) of methadone may screen Negative by Immunoassay. ",category:"Synthetic Opioid"},
-{name:"Morphine (Apokyn, Avinza®, DepoDur, Duramorph, Embeda, Kadian®, MSContin®, MSIR®, Oramorph SR®, Paregoric, Roxanol®)",screeningTest:"Opiates Immunoassay",screeningExpected:"Opiates - Positive",screeningUnexpected:"Opiates - Negative",confirmatoryTest:"GC/MS or LC/MS Opiates",confirmatoryExpected:"Morphine, possibly Hydromorphone if on high dose or chronic Morphine",confirmatoryUnexpected:"Codeine, Hydrocodone, Oxycodone, Oxymorphone, 6-acetyl morphine (Heroin metabolite)",falsePositives:"Diphenhydramine; doxylamine; clomipramine;<br/>chlorpromazine;ibuprofen;<br/>quitiapine; thioridazine; tramadol; verapamil;",detectionRange:"1 to 4 days after use",category:"Opiate"},
+{name:"Morphine (Apokyn, Avinza®, DepoDur, Duramorph, Embeda, Kadian®, MSContin®, MSIR®, Oramorph SR®, Paregoric, Roxanol®)",screeningTest:"Opiates Immunoassay",screeningExpected:"Opiates - Positive",screeningUnexpected:"Opiates - Negative",confirmatoryTest:"GC/MS or LC/MS Opiates",confirmatoryExpected:"Morphine, possibly Hydromorphone if on high dose or chronic Morphine",confirmatoryUnexpected:"Codeine, Hydrocodone, Oxycodone, Oxymorphone, 6-acetyl morphine (Heroin metabolite)",falsePositives:"Diphenhydramine; doxylamine; clomipramine;<br/>chlorpromazine; ibuprofen;<br/>quitiapine; thioridazine; tramadol; verapamil;",detectionRange:"1 to 4 days after use",category:"Opiate"},
 {name:"Oxycodone (Combunox, Endocet, Oxecta, OxyIR®, Percocet , Percodan, Roxicodone, Roxicet, Tylox®, Xartemis XR)",screeningTest:"Oxycodone Immunoassay",screeningExpected:"Oxycodone - Positive; Opiates - Negative, dose <100 mg/day; Opiates - Positive by Immunoassay, dose >100 mg/day",screeningUnexpected:"Oxycodone - Negative by Immunoassay; Opiates - Negative, dose >100 mg/day; Opiates - Positive by Immunoassay, dose <100 mg/day",confirmatoryTest:"GC/MS or LC/MS Opiates",confirmatoryExpected:"Oxycodone, Oxymorphone",confirmatoryUnexpected:"Codeine, Morphine, Hydrocodone, Hydromorphone, 6-acetyl morphine (Heroin metabolite)",falsePositives:"Poppy seeds ; dextromethorophan; diphenhydramine; fluoroquinolones; quinine, rifampin",detectionRange:"1 to 4 days after use",category:"Semi-Synthetic Opioid"},
 {name:"Oxycodone®ER (Oxycontin )",screeningTest:"Oxycodone Immunoassay",screeningExpected:"Oxycodone - Positive; Opiates - Positive, dose > 100 mg/day",screeningUnexpected:"Oxycodone - Negative",confirmatoryTest:"GC/MS or LC/MS Opiates",confirmatoryExpected:"Oxycodone and Oxymorphone",confirmatoryUnexpected:"Codeine, Morphine, Hydrocodone, Hydromorphone, or 6-acetyl morphine (Heroin metabolite)",falsePositives:"Poppy seeds ; dextromethorophan; diphenhydramine; fluoroquinolones; quinine, rifampin",detectionRange:"1 to 4 days after use",category:"Semi-Synthetic Opioid"},
 {name:"Oxymorphone (Opana®, Opana ER®, Numorphan)",screeningTest:"Oxycodone Immunoassay",screeningExpected:"Oxycodone - Positive",screeningUnexpected:"Opiates - Positive by Immunoassay",confirmatoryTest:"GC/MS or LC/MS Opiates",confirmatoryExpected:"Oxymorphone",confirmatoryUnexpected:"Codeine, Morphine, Hydrocodone, Hydromorphone, Oxycodone, or 6-acetyl morphine (Heroin metabolite)",falsePositives:"Naloxone, see list for opiates",detectionRange:"1 to 4 days after use",category:"Semi-Synthetic Opioid"},
@@ -14,9 +14,36 @@ var drugs=[
 {name:"Tramadol (Ultram®, Ultracet®)",screeningTest:"Not detected by screening test. Use confirmatory test.",screeningExpected:"Not detected by screening test. Use confirmatory test.",screeningUnexpected:"Opiates - Positive by Immunoassay",confirmatoryTest:"GC/MS or LC/MS Tramadol",confirmatoryExpected:"Tramadol and metabolites",confirmatoryUnexpected:"Codeine, Morphine, Hydrocodone, Oxycodone, Oxymorphone, 6-acetyl morphine (Heroin metabolite)",falsePositives:"Dextromethorphan",detectionRange:"1 to 24 hrs after use",category:"Semi-Synthetic Opioid"}
 ];
 
+
 	
        jQuery(document).ready(function ($) {
-
+	/*       function WrapText() {
+        for (i = 0; i <= 10; i++) {
+            WrapRow(i);
+        }            
+    }
+	
+    function WrapRow(number) {
+        var currentRow = '#row' + number + 'jqxgrid';
+        var arr = $(currentRow + ' .jqx-grid-cell-workgroup span');
+        var hOfRow = $(currentRow).height();
+        var hOfSpan = $(arr[1]).height();
+        var hToIncrease = hOfSpan - hOfRow;
+        if (hToIncrease > 0) {
+            hToIncrease += 5;
+            IncreaseSize('#jqxgrid', hToIncrease);
+            IncreaseSize('#contentjqxgrid', hToIncrease);
+            IncreaseSize(currentRow, hToIncrease);
+            MoveDown('#pager', hToIncrease);
+        }
+    }
+    function IncreaseSize(element, pixels) {
+        var current = $(element).height();
+        $(element).height(current + pixels);
+    }
+    function MoveDown(element, pixels) {
+        $(element).css('top', '+=' + pixels);
+    } */
             var source =
             {
                 localdata: drugs,
@@ -35,28 +62,34 @@ var drugs=[
 					return '<div id="map1" style="font-weight:bold;text-align:center;">' + value + '</div>';
 			};
 			
+			 // $("#jqxgrid").bind("bindingcomplete", function (event) {
+		    // console.log("wrapping");
+            // WrapText();
+			// console.log("wrapping");
+        // });
+			
             $("#jqxgrid").jqxGrid(
             {
                 width: 1100,
                 source: dataAdapter,
                 groupable: false,		
-                filterable: true,
-				filtermode: 'simple',
+                filterable: false,
+				//filtermode: 'simple',
                 autorowheight: true,
 			    columnsresize: false,				
                 autoheight: true,
-				rowsheight: 120,
+				//rowsheight: 150,
                 altRows: true,				
                 columns: [
 					{ text: 'Drug', datafield: 'name', width: 140 },	
-					{ text: 'Test', columngroup: 'Screening',datafield: 'screeningTest', width: 100 },					
+					{ text: 'Test', columngroup: 'Screening',datafield: 'screeningTest', width: 95 },					
 					{ text: 'Expected', columngroup: 'Screening',datafield: 'screeningExpected', width: 100 },
 					{ text: 'Unexpected', columngroup: 'Screening',datafield: 'screeningUnexpected', width: 100},
-					{ text: 'Test', columngroup: 'Confirmatory',datafield: 'confirmatoryTest', width: 100 },					
+					{ text: 'Test', columngroup: 'Confirmatory',datafield: 'confirmatoryTest', width: 95 },					
 					{ text: 'Expected', columngroup: 'Confirmatory',datafield: 'confirmatoryExpected', width: 100 },
 					{ text: 'Unexpected', columngroup: 'Confirmatory',datafield: 'confirmatoryUnexpected', width: 120},		
-					{ text: 'Possible False<br/>Positives', datafield: 'falsePositives',width: 140 },
-					{ text: 'Common<br/>Detection<br/>Range', datafield: 'detectionRange',width: 80 },
+					{ text: 'Possible False<br/>Positives', datafield: 'falsePositives',width: 150 },
+					{ text: 'Common<br/>Detection Range', datafield: 'detectionRange',width: 120 },
 					{ text: 'Category', datafield: 'category', width: 80 } 
 				],
 				columngroups: [
@@ -75,6 +108,7 @@ var drugs=[
                 $("#eventlog").text("Column: " + column + ", " + "New Width: " + newwidth + ", Old Width: " + oldwidth);
             });		
 			
+		
 			
 			$("#mydiv").css('top',  $("#map").offset().top);
 			$("#mydiv").css('left',  $("#map").offset().left-1);

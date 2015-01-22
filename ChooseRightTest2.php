@@ -32,6 +32,31 @@ visibility:hidden;
   
 }
 
+	@media print{
+	 .mydiv {
+		width: 0px;
+		height: 0px;
+		/*padding: 10px;*/
+		border: 1px solid black;
+		display:none;
+	  
+	}
+	.mydiv1 {
+		width: 0px;
+		height: 0px;
+		border: none;
+		display:none;
+	}
+	.navbar, .breadcrumb, .noprint, .footer{ display:none; width:0px; height:0px;}
+	
+	/*#jqxgrid{font-size:10px;opacity:1.0;}*/
+	
+	.jqx-widget-content{font-size:12px}
+	
+	h1{font-size:14px;opacity:1.0;}
+	
+	}
+
 .jqx-widget .zindexClass
         {
 			z-index:999999;
