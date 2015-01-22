@@ -68,7 +68,7 @@ var drugs=[
                 filterable: true,
 				filtermode: 'simple',
                 autorowheight: true,
-				columnsresize: true,
+				columnsresize: false,
 				columnsheight: 47,				
                 autoheight: true,				
                 altRows: true,				
@@ -103,6 +103,7 @@ var drugs=[
 			$("#mydiv").css('top',  $("#map").offset().top);
 			$("#mydiv").css('left',  $("#map").offset().left-1);
 			$("#mydiv").css('height',  $("#jqxgrid").height());
+			$("#mydiv").css('width',  $("#map").width());
 			$("#mydiv1").css('top',  $("#map1").offset().top);
 			$("#mydiv1").css('left',  $("#map1").offset().left-1);
 			$("#mydiv1").css('height',  $("#jqxgrid").height());

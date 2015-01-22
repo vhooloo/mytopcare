@@ -6,8 +6,8 @@ Template Name: ChooseRightTest2
 <?php get_header(); ?>
     <style type="text/css">
 .mydiv {
-    width: 442px;
-    height: 1050px;
+    width: 0px;
+    height: 0px;
     /*padding: 10px;*/
     border: 2px solid black;
     margin: 0;

@@ -27,6 +27,14 @@ var drugs=[
                 loadComplete: function (drugs) { },
                 loadError: function (xhr, status, error) { }
             });
+			
+			var columnsrenderer = function (value) {
+			    if (value == 'Screening')
+					return '<div id="map" style="font-weight:bold;text-align:center;">' + value + '</div>';
+				else
+					return '<div id="map1" style="font-weight:bold;text-align:center;">' + value + '</div>';
+			};
+			
             $("#jqxgrid").jqxGrid(
             {
                 width: 1100,
@@ -35,7 +43,7 @@ var drugs=[
                 filterable: true,
 				filtermode: 'simple',
                 autorowheight: true,
-			    columnsresize: true,				
+			    columnsresize: false,				
                 autoheight: true,
 				rowsheight: 120,
                 altRows: true,				
@@ -52,8 +60,8 @@ var drugs=[
 					{ text: 'Category', datafield: 'category', width: 80 } 
 				],
 				columngroups: [
-                    { text: 'Screening', align: 'center', name: 'Screening' },
-					{ text: 'Confirmatory', align: 'center', name: 'Confirmatory' }
+                    { text: 'Screening', align: 'center', name: 'Screening', renderer:columnsrenderer},
+					{ text: 'Confirmatory', align: 'center', name: 'Confirmatory', renderer:columnsrenderer}
                 ]
 				//groups: ['category']
             });
@@ -66,6 +74,26 @@ var drugs=[
                 var oldwidth = event.args.oldwidth;
                 $("#eventlog").text("Column: " + column + ", " + "New Width: " + newwidth + ", Old Width: " + oldwidth);
             });		
+			
+			
+			$("#mydiv").css('top',  $("#map").offset().top);
+			$("#mydiv").css('left',  $("#map").offset().left-1);
+			$("#mydiv").css('height',  $("#jqxgrid").height());
+			$("#mydiv").css('width',  $("#map").width()+1);
+			$("#mydiv1").css('top',  $("#map1").offset().top);
+			$("#mydiv1").css('left',  $("#map1").offset().left-1);
+			$("#mydiv1").css('height',  $("#jqxgrid").height());
+			$("#mydiv1").css('width',  $("#map1").width()+1);
+			$("#mydiv").css( "visibility", "visible" );
+			$("#mydiv1").css( "visibility", "visible" );
+			$( window ).resize(function() {
+			  console.log( "Handler for .resize() called." );
+			  $("#mydiv").css('top',  $("#map").offset().top);
+				$("#mydiv").css('left',  $("#map").offset().left-1);
+				$("#mydiv1").css('top',  $("#map1").offset().top);
+			$("#mydiv1").css('left',  $("#map1").offset().left-1);
+			});
+			
         });
 
 

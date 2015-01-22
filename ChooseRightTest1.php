@@ -4,10 +4,40 @@ Template Name: ChooseRightTest1
 */
 ?>
 <?php get_header(); ?>
+   <style type="text/css">
+.mydiv {
+    width: 0px;
+    height: 0px;
+    /*padding: 10px;*/
+    border: 2px solid black;
+    margin: 0;
+position: absolute;
+visibility:hidden;
+    /*top: 300px;
+	left: 255px;*/
+	/*z-index:999888; */
+  
+}
+.mydiv1 {
+    width: 291px;
+    height: 1050px;
+    /*padding: 10px;*/
+    border: 2px solid black;
+    margin: 0;
+position: absolute;
+visibility:hidden;
+    /*top: 300px;
+	left: 255px;*/
+	/*z-index:999888; */
+  
+}
+</style>
 <div class="breadcrumb-container">
     <div class="container">
         <?php if(function_exists('dimox_breadcrumbs')) dimox_breadcrumbs(); ?>
     </div>
+	<div id="mydiv" class="mydiv"></div>
+<div id="mydiv1" class="mydiv1"></div>
 </div>
 			<div id="content" class="clearfix row">
 			    <div class="container"> 
@@ -34,7 +64,7 @@ Template Name: ChooseRightTest1
 								<br/>
 									<!--<span><b>Click and expand the desired Category to see more details.</b></span>-->
 								<br/>								
-									<div id='jqxWidget' style="font-size: 14px; font-family: Verdana; float: left;width:100%;">
+									<div id='jqxWidget' style="font-size: 14px; font-family: Verdana; float: left;width:100%;opacity:0.7;">
 										<div id="jqxgrid" ></div>
 										<br/>
 									<span style="position: absolute; right:50px;bottom:20px;"><a href="http://mytopcare.org/udt-calculator/" title="Urine Drug Test (UDT) Decision Support">Return to UDT Decision Support</a></span><br/>									
