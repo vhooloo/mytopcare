@@ -20,6 +20,28 @@ Template Name: OpioidRiskToolVH
 .radio-toolbar input[type="radio"]:checked + label { 
     background-color:#f68428;
 }
+
+.pfonly { display:none;}
+
+@media print
+{
+.radio-toolbar label {
+    display:none;
+    background-color:transparent;
+}
+
+.radio-toolbar input[type="radio"]:checked + label { 
+    display:none;
+    background-color:#f68428;
+}
+
+.navbar, .breadcrumb, .noprint, .footer{ display:none; width:0px; height:0px;}
+
+td {font-size:12px;}
+
+.pfonly {display:inline-block;}
+
+}
 </style>
 
 <div class="breadcrumb-container">
@@ -39,7 +61,7 @@ Template Name: OpioidRiskToolVH
 
 							<div class=""><h1><b><?php the_title(); ?></b></h1>
 							
-							<span style="position: absolute; right:50px;Top:40px;"><a href="http://mytopcare.org/udt-calculator/" title="Urine Drug Test (UDT) Decision Support">Return to UDT Decision Support</a>								
+							<span  class="noprint" style="position: absolute; right:50px;Top:40px;"><a href="http://mytopcare.org/udt-calculator/" title="Urine Drug Test (UDT) Decision Support">Return to UDT Decision Support</a>								
 							</div>
 
                             <!--</header> <!-- end article header -->
@@ -59,13 +81,14 @@ Template Name: OpioidRiskToolVH
                             <section class="post_content clearfix calculator-container">
 								<div class="clearfix">
                                     <form id='utd-calculator' class='form-inline' method='POST'>
-									<a href="http://mytopcare.org/wp-content/uploads/2013/06/ORT2.pdf">Download Printable Copy of Blank ORT Form</a>
+									<a  class="noprint" href="http://mytopcare.org/wp-content/uploads/2013/06/ORT2.pdf">Download Printable Copy of Blank ORT Form</a>
 									
 									<div class="opiates-border" style='width: 600px;padding:12px; position:relative;'>
-										<span style='width: 320px; font-weight:bold;'>Patient Gender:</span>
-										<span style='width: 60px;float:right;margin:-7px;'><button type="reset" id="reset4" class="btn btn-default">Reset</button></span>
-										<span style='width: 120px;float:right;'><input type="radio" name="gender" value="0">Male</input></span>
-										<span style='width: 120px;float:right;'><input type="radio" name="gender" value="1">Female</input></span>
+										<span style='width: 320px; font-weight:bold;'>Patient Gender: <span class="pfonly" id="pfonlygender">Choose</span> </span>
+										<span style='width: 60px;float:right;margin:-7px;'><button type="reset" id="reset4" class="btn btn-default noprint">Reset</button></span>
+										<span class = "noprint" style='width: 120px;float:right;'><input type="radio" name="gender" value="0" >Male</input></span>
+										<span class = "noprint" style='width: 120px;float:right;'><input type="radio" name="gender" value="1">Female</input></span>
+										
 									</div>
 									
 									<style type="text/css">		
@@ -82,7 +105,7 @@ Template Name: OpioidRiskToolVH
 											  </thead>
 											 
 											 <tbody>
-											  <tr class="oddListRowS1" height="20">
+											  <tr class="oddListRowS1" height="15">
 											   <td  valign="top" align="left" scope="row"><h5> ORT Addiction and Diversion Risk </h5></td>
 											   <td  valign="top" align="left"></td>
 											   <td class="" valign="top" align="left"></td>
@@ -93,16 +116,16 @@ Template Name: OpioidRiskToolVH
 											 $i=$i+1;
 											 echo '<tr class="evenListRowS1" height="20" name=Row_'.$i.'>';
 											 echo '<td valign="top"  align="left" >&nbsp &nbsp '.$myrowData['TAG'].':'. $myrowData['DOM'].' </td>';
-											 echo '<td class="" valign="top" align="center"><div class="radio-toolbar"><input type="radio" id="'.$myrowData['TAG'].'_checkid1" name ="'.$myrowData['TAG'].'_check" female='.$myrowData['FEM'].' male='.$myrowData['MALE'].' value=1 ><label for="'.$myrowData['TAG'].'_checkid1">Yes</label>&nbsp;<input type="radio" id="'.$myrowData['TAG'].'_checkid2" name ="'.$myrowData['TAG'].'_check"  male=0 female=0><label for="'.$myrowData['TAG'].'_checkid2">No&nbsp;</label></div></td>';
-											 echo '<td class="" valign="top" align="center"><input class="opiates-border" type="text" readonly id="'.$myrowData['TAG'].'_id" name ="'.$i.'-text" style="margin:2px; text-align:center; width:40%;" value = "" width="5%"></td>';
+											 echo '<td class="" valign="top" align="center"><div class="radio-toolbar"><input type="radio" id="'.$myrowData['TAG'].'_checkid1" name ="'.$myrowData['TAG'].'_check" female='.$myrowData['FEM'].' male='.$myrowData['MALE'].' value=1 ><label for="'.$myrowData['TAG'].'_checkid1">Yes</label>&nbsp;<input type="radio" id="'.$myrowData['TAG'].'_checkid2" name ="'.$myrowData['TAG'].'_check"  male=0 female=0><label for="'.$myrowData['TAG'].'_checkid2">No&nbsp;</label></div><div  class="pfonly" id="pfonly'.$myrowData['TAG'].'">la</div></td>';
+											 echo '<td class="" valign="top" align="center"><input class="opiates-border noprint" type="text" readonly id="'.$myrowData['TAG'].'_id" name ="'.$i.'-text" style="margin:2px; text-align:center; width:40%;" value = "" width="5%"><span class="pfonly" id="respfonly'.$myrowData['TAG'].'">Choice</span></td>';
 											 echo '</tr>';
 											 }
 											 ?>
-											 <tr class="oddListRowS1" height="20">
+											 <tr class="oddListRowS1" height="15">
 											  <td class="" valign="top" align="left" scope="row"><h5> ORT-SUM: Sum of Above </h5></td>
 											  <td class="" valign="top" align="left"> </td>
-											  <td  valign="top" align="left"><input class="opiates-border" style="margin:2px;text-align:center;font-weight:bold;width:60px;background-color:#7A7A7A;!important" name="ortsum" id="ORT_SUM" value = "0" readonly>
-											 </tr>
+											  <td  valign="top" align="left"><span class="pfonly" id="pfonlysum">Sum</span> </span><input class="opiates-border noprint" style="margin:2px;text-align:center;font-weight:bold;width:60px;background-color:#7A7A7A;!important" name="ortsum" id="ORT_SUM" value = "0" readonly></td>
+											 </tr> 
 											  </tbody>
 										</table>
 										<!--div id="recommendation" class = "hidden"> Recommendation </div-->
@@ -111,6 +134,8 @@ Template Name: OpioidRiskToolVH
 												<div class="subpage-box-header">
 													<h3>
 													Urine Drug Testing Recommendation.
+													<span style='width: 60px;float:right;margin:-7px;'><button type="reset" id="print" class="btn btn-default noprint" onclick="window.print();">Print</button></span>
+													<?php if(function_exists('pf_show_link')){echo pf_show_link();} ?>
 													</h3>
 												</div>
 												<div id="rectext" class="subpage-box-content">
@@ -120,7 +145,7 @@ Template Name: OpioidRiskToolVH
 												</div>
 											</div>
 										</div>
-							<span style="position: absolute; right:50px;bottom:5px;"><a href="http://mytopcare.org/udt-calculator/" title="Urine Drug Test (UDT) Decision Support">Return to UDT Decision Support</a></span><br/>	
+							<span  class="noprint" style="position: absolute; right:50px;bottom:5px;"><a href="http://mytopcare.org/udt-calculator/" title="Urine Drug Test (UDT) Decision Support">Return to UDT Decision Support</a></span><br/>	
 
 
 

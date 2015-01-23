@@ -3,6 +3,7 @@
 jQuery(document).ready( function($){
 var gender="";
 
+
 	$('input[name="gender"]').click(function(f) {
         if( $('input[name="gender"]').is(":checked") ){
             gender = $('input[name="gender"]:checked').val();
@@ -10,6 +11,8 @@ var gender="";
 		$('input[name="gender"]').prop('disabled',true);
 		$("#mytable").removeClass("hidden");
 		$('#mytable').show('slow');
+		if (gender == 0) $("#pfonlygender").text("Male"); 
+		if (gender == 1) $("#pfonlygender").text("Female"); 
 	
 	});
 	
@@ -35,11 +38,17 @@ var gender="";
 	var upd=1;
 		$row=$(this).closest("tr");		
 		if(gender ==1) { //female
-			$row.find(":text").val($(this).attr("female"));		
+			$row.find(":text").val($(this).attr("female"));	
+			$row.find('[id^=respfonly]').text($(this).attr("female"));			
 		} else if (gender ==0 && $(this).val()!=0){
-			$row.find(":text").val($(this).attr("male"));				
+			$row.find(":text").val($(this).attr("male"));
+			$row.find('[id^=respfonly]').text($(this).attr("male"));			
 		} 
-		
+		if ($(this).val() == 1)
+			$row.find('[id^=pfonly]').html("YES");
+		else
+			$row.find('[id^=pfonly]').html("NO");
+		 
 		$('input[name$="text"]').each(function(i){		   
 		    value = parseInt($(this).val(), 10);
 			if ( !isNaN(value)) {
@@ -51,6 +60,7 @@ var gender="";
 		});		
 		
 		if(upd==1) {
+			$("#pfonlysum").text(ortsum);
 		    $("#recommendation").removeClass("hidden");
 			$('input[name="ortsum"]').val(ortsum);
 			if (ortsum<=3){
