@@ -80,10 +80,14 @@ jQuery(document).ready( function($){
 	var green = 'rgb(0, 176,80)';
 	var red = 'rgb(255,0,0)';					
 	var strMed = "";
+	
+	$('#opiatescheck').hide();
 
 	$(".drugTests").change(function () {
 		//add content to change function
 	});
+	
+	 $('[data-toggle="tooltip"]').tooltip();
 	
 	$(".drugTests").bind("mousedown", function(e) {
 	  e.metaKey = true;
@@ -113,27 +117,27 @@ jQuery(document).ready( function($){
 			$('input[name="opiates"]').attr('disabled',false);
     });
 
-	$("#interpret2").click(function(f) {
-		allCheck=false;
-		if($('input[name="opiates"]').is(":checked")){
-            $("#utd-calculator tbody tr").each( function(){
-				if( ($(this).find("input:radio")).is(':checked')){
-					allCheck=true;
-				}	
-			});
-			//if(!allCheck){
-			//	alert("Please select the Patient Drug(s) preference"); 
-			//	return;
-			//}
-		} else {
-			alert("Please indicate the Opiate Test Result first");
-			return;
-		}	
-		$(this).attr("value","clicked");
-		$(this).attr('disabled','disabled');
-		f.preventDefault();
-		$("#utd-calculator").submit();
-	});
+	//$("#rundummy").click(function(f) {
+	//	allCheck=false;
+	//	if($('input[name="opiates"]').is(":checked")){
+    //        $("#utd-calculator tbody tr").each( function(){
+	//			if( ($(this).find("input:radio")).is(':checked')){
+	//				allCheck=true;
+	//			}	
+	//		});
+	//		if(!allCheck){
+	//			alert("Please select the Patient Drug(s) preference"); 
+	//			return;
+	//		}
+	//	} else {
+	//		alert("Please indicate the Opiate Test Result first");
+	//		return;
+	//	}	
+		//$(this).attr("value","clicked");
+		//$(this).attr('disabled','disabled');
+		//f.preventDefault();
+		//$("#utd-calculator").submit();
+	//});
 	
 	
 	
@@ -162,6 +166,20 @@ jQuery(document).ready( function($){
 	var myselection = {methtake:"na", methtest:"na", buptake:"na", buptest: "na", opiatetest: "na", codeinetake: "na", morphinetake:"na", hydrocodtake:"na", hydromortake:"na",  oxycodtake:"na", oxymorphtake:"na", oxytest:"na", meptake:"na", fenttake:"na", herointake:"na"}; 		
 	
 	$("#run").click(function(f) {
+	$('#opiatescheck').hide();
+		allCheck=false;
+		if($('input[name="opiates"]').is(":checked") && $('input[name="oxytest"]').is(":checked")){
+            
+					allCheck=true;
+				}	
+		
+			if(!allCheck){
+				//alert("Please select the test results"); 
+				//$('#run').popover('show');
+				$('#opiatescheck').show();
+				return;
+			}
+		
 	    //alert("satrt");
 		contents = $('#selectable').find('.drug');
 		//if(contents.length === 0) {
@@ -184,7 +202,8 @@ jQuery(document).ready( function($){
 	
 		if( $('input:radio[name=opiates]:checked').val() == 1 ){
             myselection["opiatetest"] = "pos";
-		} else myselection["opiatetest"] = "neg";
+			$('#opiatestext').text("Opiates Test Positive");
+		} else {myselection["opiatetest"] = "neg";$('#opiatestext').text("Opiates Test Negative");}
 				if(  $('input:radio[name=buptest]:checked').val() == 1 ){
             myselection["buptest"] = "pos";
 		} else myselection["buptest"] = "neg";
@@ -192,8 +211,8 @@ jQuery(document).ready( function($){
             myselection["methtest"] = "pos";
 		}else myselection["methtest"] = "neg";
 				if(  $('input:radio[name=oxytest]:checked').val() == 1 ){
-            myselection["oxytest"] = "pos";
-		}else myselection["oxytest"] = "neg";
+            myselection["oxytest"] = "pos"; $('#oxytext').text("Oxycodone Test Positive");
+		}else {myselection["oxytest"] = "neg";$('#oxytext').text("Oxycodone Test Negative");}
 		
 			console.log (JSON.stringify(myselection));
 		
