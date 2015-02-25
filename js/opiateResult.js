@@ -142,25 +142,35 @@ jQuery(document).ready( function($){
 	
 	
 	var risklist = {
-     bup:  [{buptake:"pos", buptest:"pos", bupmsg:"Expected Patient prescribed Buprenorphine and UDT for Buprenorphine is positive "}, {buptake:"neg", buptest:"neg", bupmsg:"Expected Patient NOT prescribed Buprenorphine and UDT for Buprenorphine is negative"},{buptake:"pos", buptest:"neg", bupmsg:"Unexpected: Patient prescribed Buprenorphine, highly unlikely that UDT for Buprenorphine would be negative"} , {buptake:"neg", buptest:"pos", bupmsg:"Unexpected:  Patient NOT prescribed Buprenorphine, highly unlikely that UDT for Buprenorphine would be positive"}],
-	 meth:  [{methtake:"pos", methtest:"pos", methmsg:"Expected Patient prescribed Methadone and UDT for Methadone is positive "}, {methtake:"neg", methtest:"neg", methmsg:"Expected Patient Not prescribed Methadone and UDT for Methadone is negative"},{methtake:"pos", methtest:"neg", methmsg:"Unexpected Patient prescribed Methadone, highly unlikely that UDT for Methadone would be negative "} , {methtake:"neg", methtest:"pos", methmsg:"Unexpected Patient NOT prescribed Methadone, highly unlikely that UDT for Methadone would be positive"}],
+     bup:  [{buptake:"pos", opiatetest:"pos", interp:"Unexpected", expl:"Cannot determine if patient is or is not taking Buprenorphine, Buprenorphine not detected by Opiates or Oxycodone screening tests", testrec:"Opiates or Oxycodone screening test are not appropriate for testing, consider confirmatory"}, {buptake:"neg", opiatetest:"neg", interp:"Expected", expl:"Cannot determine if patient is or is not taking Buprenorphine, Buprenorphine not detected by Opiates or Oxycodone screening tests",bupmsg:"Expected Patient NOT prescribed Buprenorphine and UDT for Buprenorphine is negative", testrec:"Opiates or Oxycodone screening test are not appropriate for testing, consider confirmatory"},{buptake:"pos", opiatetest:"neg", interp:"Unexpected", expl:"Cannot determine if patient is or is not taking Buprenorphine, Buprenorphine not detected by Opiates or Oxycodone screening tests",bupmsg:"Unexpected: Patient prescribed Buprenorphine, highly unlikely that UDT for Buprenorphine would be negative", testrec:"Opiates or Oxycodone screening test are not appropriate for testing, consider confirmatory"} , {buptake:"neg", opiatetest:"pos", interp:"Expected", expl:"Cannot determine if patient is or is not taking Buprenorphine, Buprenorphine not detected by Opiates or Oxycodone screening tests",bupmsg:"Unexpected:  Patient NOT prescribed Buprenorphine, highly unlikely that UDT for Buprenorphine would be positive", testrec:"Opiates or Oxycodone screening test are not appropriate for testing, consider confirmatory"}],
+	 meth:  [{methtake:"pos", opiatetest:"pos",  interp:"Unexpected", expl:"Cannot determine if patient is or is not taking Methadone, Methadone not detected by Opiates or Oxycodone screening tests",methmsg:"Expected Patient prescribed Methadone and UDT for Methadone is positive ", testrec:"Opiates or Oxycodone screening test are not appropriate for testing, consider confirmatory"}, {methtake:"neg", opiatetest:"neg", interp:"Expected", expl:"Cannot determine if patient is or is not taking Methadone, Methadone not detected by Opiates or Oxycodone screening tests",methmsg:"Expected Patient Not prescribed Methadone and UDT for Methadone is negative", testrec:"Opiates or Oxycodone screening test are not appropriate for testing, consider confirmatory"},{methtake:"pos", opiatetest:"neg", interp:"Unexpected", expl:"Cannot determine if patient is or is not taking Methadone, Methadone not detected by Opiates or Oxycodone screening tests",methmsg:"Unexpected Patient prescribed Methadone, highly unlikely that UDT for Methadone would be negative ", testrec:"Opiates or Oxycodone screening test are not appropriate for testing, consider confirmatory"} , {methtake:"neg", opiatetest:"pos",  interp:"Unexpected", expl:"Cannot determine if patient is or is not taking Methadone, Methadone not detected by Opiates or Oxycodone screening tests",methmsg:"Unexpected Patient NOT prescribed Methadone, highly unlikely that UDT for Methadone would be positive", testrec:"Opiates or Oxycodone screening test are not appropriate for testing, consider confirmatory"}],
+	 
 	 //***opiates -- all that make opiates definitely positive
-	codeine: [{codeinetake:"pos", opiatetest:"pos", opiatemsg:"Expected Patient prescribed Codeine, highly likely that Opiate test would be positive"}, {codeinetake:"neg", opiatetest:"neg", opiatemsg:"Expected -ve/-ve"} ,{codeinetake:"pos", opiatetest:"neg", opiatemsg:"Unexpected Patient prescribed Codeine, highly unlikely that Opiate test would be negative"}, {codeinetake:"neg", opiatetest:"pos", opiatemsg:"Unexpected Patient NOT prescribed Codeine, highly unlikely that Opiate test would be positive"}],
-	heroin: [{herointake:"pos", opiatetest:"pos", opiatemsg:"Expected Patient using heroin, highly likely that Opiate test would be positive"}, {herointake:"neg", opiatetest:"neg", opiatemsg:"Expected -ve/-ve"} ,{herointake:"pos", opiatetest:"neg", opiatemsg:"Unexpected  Patient using heroin, highly unlikely that Opiate test would be negative"},{herointake:"neg", opiatetest:"pos", opiatemsg:"Unexpected Patient NOT prescribed Heroin, highly unlikely that Opiate test would be positive"}],
-	morphine: [{morphinetake:"pos", opiatetest:"pos", opiatemsg:"Expected Patient prescribed morphine, highly likely that Opiate test would be positive"}, {morphinetake:"neg", opiatetest:"neg", opiatemsg:"Expected -ve/-ve"} ,{morphinetake:"pos", opiatetest:"neg", opiatemsg:"Unexpected Patient prescribed morphine, highly unlikely that Opiate test would be negative"},{morphinetake:"neg", opiatetest:"pos", opiatemsg:"Unexpected Patient NOT prescribed Morphine, highly unlikely that Opiate test would be positive"}],
+	codeine: [{codeinetake:"pos", opiatetest:"pos", interp:"Expected", expl:"Patient taking , highly likely that Opiate test would be positive", opiatemsg:"Expected Patient prescribed Codeine, highly likely that Opiate test would be positive", testrec:"Opiates is appropriate test" }, {codeinetake:"neg", opiatetest:"neg",  interp:"Expected", expl:"Patient not taking , highly likely that Opiate test would be negative", opiatemsg:"Expected -ve/-ve", testrec:"Opiates is appropriate test" } ,{codeinetake:"pos", opiatetest:"neg",  interp:"Unexpected", expl:"Patient taking , highly unlikely that Opiate test would be negative", opiatemsg:"Unexpected Patient prescribed Codeine, highly unlikely that Opiate test would be negative", testrec:"Opiates is appropriate test" }, {codeinetake:"neg", opiatetest:"pos",  interp:"Unexpected", expl:"Patient not taking , highly unlikely that Opiate test would be positive",  opiatemsg:"Unexpected Patient NOT prescribed Codeine, highly unlikely that Opiate test would be positive", testrec:"Opiates is appropriate test" }],
+	
+	heroin: [{herointake:"pos", opiatetest:"pos",  interp:"Expected", expl:"Patient  taking , highly likely that Opiate test would be positive",  opiatemsg:"Expected Patient using heroin, highly likely that Opiate test would be positive", testrec:"Opiates is appropriate test" }, {herointake:"neg", opiatetest:"neg",  interp:"Expected", expl:"Patient not taking , highly likely that Opiate test would be negative", opiatemsg:"Expected -ve/-ve", testrec:"Opiates is appropriate test" } ,{herointake:"pos", opiatetest:"neg",  interp:"Unexpected", expl:"Patient  taking , highly unlikely that Opiate test would be negative", opiatemsg:"Unexpected  Patient using heroin, highly unlikely that Opiate test would be negative", testrec:"Opiates is appropriate test" },{herointake:"neg", opiatetest:"pos",  interp:"Unexpected", expl:"Patient not taking , highly unlikely that Opiate test would be positive", opiatemsg:"Unexpected Patient NOT prescribed Heroin, highly unlikely that Opiate test would be positive", testrec:"Opiates is appropriate test" }],
+	
+	
+	morphine: [{morphinetake:"pos", opiatetest:"pos",  interp:"Expected", expl:"Patient  taking , highly likely that Opiate test would be positive", opiatemsg:"Expected Patient prescribed morphine, highly likely that Opiate test would be positive", testrec:"Opiates is appropriate test" }, {morphinetake:"neg", opiatetest:"neg",  interp:"Expected", expl:"Patient not taking , highly likely that Opiate test would be negative", opiatemsg:"Expected -ve/-ve", testrec:"Opiates is appropriate test" } ,{morphinetake:"pos", opiatetest:"neg",  interp:"Unexpected", expl:"Patient taking , highly unlikely that Opiate test would be negative", opiatemsg:"Unexpected Patient prescribed morphine, highly unlikely that Opiate test would be negative", testrec:"Opiates is appropriate test" },{morphinetake:"neg", opiatetest:"pos",  interp:"Unexpected", expl:"Patient not taking , highly unlikely that Opiate test would be positive", opiatemsg:"Unexpected Patient NOT prescribed Morphine, highly unlikely that Opiate test would be positive", testrec:"Opiates is appropriate test" }],
 	
 	//*** opiates -- all that can make possibly opiates +ve but not necessarily
-	hydrocod: [ {hydrocodtake:"neg", opiatetest:"neg", opiatemsg:"Expected -ve/-ve"} ,{hydrocodtake:"pos", opiatetest:"pos", opiatemsg:"Possible High dose or recent Hyrocodone can give a positive Opiates Test "},{hydrocodtake:"neg", opiatetest:"pos", opiatemsg:"Unexpected Patient not prescribed Hydrocone highly unlikely Opiate test would be positive"},{hydrocodtake:"pos", opiatetest:"neg", opiatemsg:"Possible hydrocodone not detected by opiate test all the time"}],
-	hydromor: [{hydromortake:"neg", opiatetest:"neg", opiatemsg:"Expected"} ,{hydromortake:"pos", opiatetest:"pos", opiatemsg:"Possible High dose or recent Hydromorphone can give a positive Opiates Test "},{hydromortake:"neg", opiatetest:"pos", opiatemsg:"Unexepected Patient not prescribed Hydromorphone highly unlikely Opiate test would be positive"},{hydromortake:"pos", opiatetest:"neg", opiatemsg:"Possible Patient prescribed Hydromorphone Opiate test may be negative"}],
+	hydrocod: [ {hydrocodtake:"neg", opiatetest:"neg", opiatemsg:"Expected -ve/-ve",  interp:"Expected", expl:"Patient  not taking Hydrocodone, highly likely that Opiate test would be negative", testrec:"Opiates is appropriate test" } ,{hydrocodtake:"pos", opiatetest:"pos",  interp:"Possible", expl:"High dose or recent Hydrocodone can give a positive Opiates Test",opiatemsg:"Possible High dose or recent Hydrocodone can give a positive Opiates Test", testrec:"Opiates is appropriate test" },{hydrocodtake:"neg", opiatetest:"pos", interp:"Unexpected", expl:"Patient  not taking Hydrocodone, highly unlikely that Opiate test would be positive", opiatemsg:"Unexpected Patient not prescribed Hydrocone highly unlikely Opiate test would be positive", testrec:"Opiates is appropriate test" },{hydrocodtake:"pos", opiatetest:"neg", interp:"Possible", expl:"Low or distant Hydrocodone dosing can give a negative Opiates Test ",opiatemsg:"Possible Low or distant Hydrocodone dosing can give a negative Opiates Test ", testrec:"Opiates is appropriate test" }],
+	hydromor: [{hydromortake:"neg", opiatetest:"neg",  interp:"Expected", expl:"Patient  not taking Hydromorphone , highly likely that Opiate test would be negative", opiatemsg:"Expected", testrec:"Opiates is appropriate test" } ,{hydromortake:"pos", opiatetest:"pos", interp:"Possible", expl:"High dose or recent  Hydromorphone  can give a positive Opiates Test", opiatemsg:"Possible High dose or recent  Hydromorphone  can give a positive Opiates Test", testrec:"Opiates is appropriate test" },{hydromortake:"neg", opiatetest:"pos", interp:"Unexpected", expl:"Patient  not taking  Hydromorphone , highly unlikely that Opiate test would be positive",opiatemsg:"Unexepected Patient not prescribed Hydromorphone highly unlikely Opiate test would be positive", testrec:"Opiates is appropriate test" },{hydromortake:"pos", opiatetest:"neg", interp:"Possible", expl:"Low or distant Hydromorphone dosing can give a negative Opiates Test", opiatemsg:"Possible Low or distant Hydromorphone dosing can give a negative Opiates Test", testrec:"Opiates is appropriate test" }],
 	
 	//*** mep and fenta
-    mep: [{meptake:"pos", opiatetest:"pos", opiatemsg:"Unexpected", mepmsg:"Possible Cannot determine if patient is or is not taking Meperidine since this medication does not show up in an Opiates only screening test, Consider Specific Confirmatory testing"}, {meptake:"neg", opiatetest:"neg", mepmsg:"Possible Cannot determine if patient is or is not taking Meperidine since this medication does not show up in an Opiates only screening test, Consider Specific Confirmatory testing"} , {meptake:"pos", opiatetest:"neg", mepmsg:"Possible Cannot determine if patient is or is not taking Meperidine since this medication does not show up in an Opiates only screening test, Consider Specific Confirmatory testing"}, {meptake:"neg", opiatetest:"pos", opiatemsg:"Unexpected", mepmsg:"Possible cannot determine if patient is or is not taking Meperidine since this medication does not show up in an Opiates only screening test, Consider Specific Confirmatory testing"}],
-	fent: [{fenttake:"pos", opiatetest:"pos", opiatemsg:"Unexpected", fentmsg:"Possible Cannot determine if patient is or is not taking Fentanyl since this medication does not show up in an Opiates only screening test, Consider Specific Confirmatory testing"}, {fenttake:"neg", opiatetest:"neg", fentmsg:"Possible Cannot determine if patient is or is not taking Fentanyl since this medication does not show up in an Opiates only screening test, Consider Specific Confirmatory testing"} , {fenttake:"pos", opiatetest:"neg", fentmsg:"Possible Cannot determine if patient is or is not taking Fentanyl since this medication does not show up in an Opiates only screening test, Consider Specific Confirmatory testing"}, {fenttake:"neg", opiatetest:"pos", opiatemsg:"Unexpected", fentmsg:"Possible Cannot determine if patient is or is not taking Fentanyl since this medication does not show up in an Opiates only screening test, Consider Specific Confirmatory testing"}],
+    mep: [{meptake:"pos", opiatetest:"pos", opiatemsg:"Unexpected", interp:"Unexpected", expl:"Cannot determine if patient is or is not taking Meperidine, Meperidine not detected by Opiates or Oxycodone screening tests", mepmsg:"Possible Cannot determine if patient is or is not taking Meperidine since this medication does not show up in an Opiates only screening test, Consider Specific Confirmatory testing", testrec:"Opiates or Oxycodone screening test are not appropriate for testing, consider confirmatory"}, {meptake:"neg", opiatetest:"neg", interp:"Expected", expl:"Cannot determine if patient is or is not taking Meperidine, Meperidine not detected by Opiates or Oxycodone screening tests", mepmsg:"Possible Cannot determine if patient is or is not taking Meperidine since this medication does not show up in an Opiates only screening test, Consider Specific Confirmatory testing", testrec:"Opiates or Oxycodone screening test are not appropriate for testing, consider confirmatory"} , {meptake:"pos", opiatetest:"neg", interp:"Unexpected", expl:"Cannot determine if patient is or is not taking Meperidine, Meperidine not detected by Opiates or Oxycodone screening tests",mepmsg:"Possible Cannot determine if patient is or is not taking Meperidine since this medication does not show up in an Opiates only screening test, Consider Specific Confirmatory testing", testrec:"Opiates or Oxycodone screening test are not appropriate for testing, consider confirmatory"}, {meptake:"neg", opiatetest:"pos", interp:"Unexpected", expl:"Cannot determine if patient is or is not taking Meperidine, Meperidine not detected by Opiates or Oxycodone screening tests",opiatemsg:"Unexpected", mepmsg:"Possible cannot determine if patient is or is not taking Meperidine since this medication does not show up in an Opiates only screening test, Consider Specific Confirmatory testing", testrec:"Opiates or Oxycodone screening test are not appropriate for testing, consider confirmatory"}],
+	
+	fent: [{fenttake:"pos", opiatetest:"pos", opiatemsg:"Unexpected", interp:"Unexpected", expl:"Cannot determine if patient is or is not taking Fentanyl, Fentanyl not detected by Opiates or Oxycodone screening tests",fentmsg:"Possible Cannot determine if patient is or is not taking Fentanyl since this medication does not show up in an Opiates only screening test, Consider Specific Confirmatory testing", testrec:"Opiates or Oxycodone screening test are not appropriate for testing, consider confirmatory"}, {fenttake:"neg", opiatetest:"neg", interp:"Expected", expl:"Cannot determine if patient is or is not taking Fentanyl, Fentanyl not detected by Opiates or Oxycodone screening tests",fentmsg:"Possible Cannot determine if patient is or is not taking Fentanyl since this medication does not show up in an Opiates only screening test, Consider Specific Confirmatory testing", testrec:"Opiates or Oxycodone screening test are not appropriate for testing, consider confirmatory"} , {fenttake:"pos", opiatetest:"neg", interp:"Unexpected", expl:"Cannot determine if patient is or is not taking Fentanyl, Fentanyl not detected by Opiates or Oxycodone screening tests",fentmsg:"Possible Cannot determine if patient is or is not taking Fentanyl since this medication does not show up in an Opiates only screening test, Consider Specific Confirmatory testing", testrec:"Opiates or Oxycodone screening test are not appropriate for testing, consider confirmatory"}, {fenttake:"neg", opiatetest:"pos", opiatemsg:"Unexpected", interp:"Expected", expl:"Cannot determine if patient is or is not taking Fentanyl, Fentanyl not detected by Opiates or Oxycodone screening tests",fentmsg:"Possible Cannot determine if patient is or is not taking Fentanyl since this medication does not show up in an Opiates only screening test, Consider Specific Confirmatory testing", testrec:"Opiates or Oxycodone screening test are not appropriate for testing, consider confirmatory"}],
 	
 	 //*** oxycod and oxymorph
-	 oxycod: [{oxycodtake:"pos", opiatetest:"pos", opiatemsg:"Possible High dose or recent Oxycodone can give a positive Opiates Test "}, {oxycodtake:"neg", opiatetest:"neg", opiatemsg:"Expected Irrelevant if only factor"} , {oxycodtake:"pos", opiatetest:"neg", opiatemsg:"Possible:  Only High doses or recent Oxycodone may give a positive Opiates Test"}, {oxycodtake:"neg", opiatetest:"pos", opiatemsg:"Unexpected Patient NOT prescribed Oxycodone, highly unlikely that Opiate test would be positive"},{oxycodtake:"pos", oxytest:"pos", oxymsg:"Expected: Patient  prescribed Oxycodone, highly likely that Oxycodone test would be positive"}, {oxycodtake:"neg", oxytest:"neg", oxymsg:"Expected:Patient not prescribed Oxycodone, highly likely that Oxycodone test would be negative"}, {oxycodtake:"pos", oxytest:"neg", oxymsg:"Unexpected: Patient prescribed Oxycodone, highly unlikely that Oxycodone test would be negative"}, {oxycodtake:"neg", oxytest:"pos", oxymsg:"Unexpected: Patient NOT prescribed Oxycodone, highly unlikely that Oxycodone test would be positive"}],
+	 oxycod: [{oxycodtake:"pos", opiatetest:"pos", interp:"Possible", expl:"Possible High dose or recent Oxycodone can give a positive Opiates Test. ",opiatemsg:"Possible High dose or recent Oxycodone can give a positive Opiates Test ", testrec:"Oxycodone, not Opiates, is the appropriate test" }, {oxycodtake:"neg", opiatetest:"neg", interp:"Expected", expl:"Patient not taking Oxycodone highly unlikely Opiate test would be positive. ", opiatemsg:"Expected Irrelevant if only factor", testrec:"Oxycodone, not Opiates, is the appropriate test" } , {oxycodtake:"pos", opiatetest:"neg", interp:"Possible", expl:"High or recent Oxycodone doses may give a positive Opiates Test", opiatemsg:"Possible:  Only High doses or recent Oxycodone may give a positive Opiates Test", testrec:"Oxycodone, not Opiates, is the appropriate test" }, {oxycodtake:"neg", opiatetest:"pos", interp:"Unexpected", expl:"Patient NOT taking Oxycodone highly unlikely Opiate test would be positive. ", opiatemsg:"Unexpected Patient NOT prescribed Oxycodone, highly unlikely that Opiate test would be positive", testrec:"Oxycodone, not Opiates, is the appropriate test" },
 	 
-	 oxymorph: [{oxymorphtake:"pos", opiatetest:"pos", opiatemsg:"Unexpected Patient prescribed Oxymorphone, highly unlikely  Opiates Test would be positive "}, {oxymorphtake:"neg", opiatetest:"neg", opiatemsg:"Expected Patient prescribed Oxymorphone, highly unlikely  Opiates Test would be positive"} , {oxymorphtake:"pos", opiatetest:"neg", opiatemsg:"Expected Patient prescribed Oxymorphone, highly unlikely  Opiates Test would be positive"}, {oxymorphtake:"neg", opiatetest:"pos", opiatemsg:"Unexpected due to oxy only"},{oxymorphtake:"pos", oxytest:"pos", oxymsg:"Expected:Patient prescribed Oxymorphone, highly likely that Oxycodone test would be positive"}, {oxymorphtake:"neg", oxytest:"neg", oxymsg:"Expected Patient not prescribed Oxymorphone, highly likely that Oxycodone test would be negative"}, {oxymorphtake:"pos", oxytest:"neg", oxymsg:"Unexpected:Patient prescribed Oxymorphone, highly unlikely that Oxycodone test would be negative"}, {oxymorphtake:"neg", oxytest:"pos", oxymsg:"Unexpected: Patient not prescribed Oxymorphone, highly unlikely that Oxycodone test would be positive"}]
+	 {oxycodtake:"pos", oxytest:"pos", interp:"Expected", expl:"Patient taking Oxycodone, highly likely Oxycodone test would be positive. ", oxymsg:"Expected: Patient  prescribed Oxycodone, highly likely that Oxycodone test would be positive", testrec:"Oxycodone  is the appropriate test" }, {oxycodtake:"neg", oxytest:"neg", interp:"Expected", expl:"Patient NOT taking Oxycodone, highly likely Oxycodone test would be negative. ", oxymsg:"Expected:Patient not prescribed Oxycodone, highly likely that Oxycodone test would be negative", testrec:"Oxycodone  is the appropriate test"}, {oxycodtake:"pos", oxytest:"neg", interp:"Unexpected", expl:"Patient taking Oxycodone, highly unlikely Oxycodone test would be negative. ", oxymsg:"Unexpected: Patient prescribed Oxycodone, highly unlikely that Oxycodone test would be negative", testrec:"Oxycodone  is the appropriate test" }, {oxycodtake:"neg", oxytest:"pos", interp:"Unexpected", expl:"Patient NOT taking Oxycodone, highly unlikely Oxycodone test would be positive. ",oxymsg:"Unexpected: Patient NOT prescribed Oxycodone, highly unlikely that Oxycodone test would be positive", testrec:"Oxycodone  is the appropriate test" }],
+	 
+	 oxymorph: [{oxymorphtake:"pos", opiatetest:"pos", interp:"Unexpected",  expl:"Oxymorphone is not detected by Opiates Test. ", opiatemsg:"Unexpected Patient prescribed Oxymorphone, highly unlikely  Opiates Test would be positive ", testrec:"Oxycodone, not Opiates, is the appropriate test" }, {oxymorphtake:"neg", opiatetest:"neg", interp:"Expected", expl:"Oxymorphone is not detected by Opiates Test. ",  opiatemsg:"Expected Patient prescribed Oxymorphone, highly unlikely  Opiates Test would be positive", testrec:"Oxycodone, not Opiates, is the appropriate test" } , {oxymorphtake:"pos", opiatetest:"neg", interp:"Expected", expl:"Oxymorphone is not detected by Opiates Test. ", opiatemsg:"Expected Patient taking Oxymorphone. Oxymorphone is not detected by an Opiates", testrec:"Oxycodone, not Opiates, is the appropriate test" }, {oxymorphtake:"neg", opiatetest:"pos", interp:"Unexpected", expl:"Patient NOT taking Oxymorphone, Oxymorphone is not detected by Opiates Test.  ", opiatemsg:"Unexpected due to oxy only", testrec:"Oxycodone, not Opiates, is the appropriate test" },
+	 
+	 {oxymorphtake:"pos", oxytest:"pos", interp:"Expected", expl:"Patient taking Oxymorphone, highly likely Oxycodone test would be positive. ", oxymsg:"Expected:Patient prescribed Oxymorphone, highly likely that Oxycodone test would be positive", testrec:"Oxycodone Test is the appropriate test" }, 
+	 {oxymorphtake:"neg", oxytest:"neg", interp:"Expected", expl:"Patient NOT taking Oxymorphone, highly likely Oxycodone test would be negative. ",oxymsg:"Expected Patient not prescribed Oxymorphone, highly likely that Oxycodone test would be negative", testrec:"Oxycodone Test is the appropriate test" }, {oxymorphtake:"pos", oxytest:"neg", interp:"Unexpected", expl:"Patient taking Oxymorphone, highly unlikely Oxycodone test would be negative. ", oxymsg:"Unexpected:Patient prescribed Oxymorphone, highly unlikely that Oxycodone test would be negative", testrec:"Oxycodone Test is the appropriate test" }, {oxymorphtake:"neg", oxytest:"pos", interp:"Unexpected", expl:"Patient NOT taking Oxymorphone, highly unlikely Oxycodone test would be positive. ",oxymsg:"Unexpected: Patient not prescribed Oxymorphone, highly unlikely that Oxycodone test would be positive", testrec:"Oxycodone Test is the appropriate test" }]
                    };
 
 	var myselection = {methtake:"na", methtest:"na", buptake:"na", buptest: "na", opiatetest: "na", codeinetake: "na", morphinetake:"na", hydrocodtake:"na", hydromortake:"na",  oxycodtake:"na", oxymorphtake:"na", oxytest:"na", meptake:"na", fenttake:"na", herointake:"na"}; 		
@@ -194,7 +204,7 @@ jQuery(document).ready( function($){
 		$("#opiatesDrugs").removeClass("hidden");
 		contents.each( function() {
 			drugName=$(this).attr('name');
-			console.log($(this).text());   
+			//console.log($(this).text());   
 				if ($(this).hasClass("ui-selected")) myselection[drugName] = "pos"; else myselection[drugName] = "neg";
 		});
 		
@@ -214,7 +224,7 @@ jQuery(document).ready( function($){
             myselection["oxytest"] = "pos"; $('#oxytext').text("Oxycodone Test Positive");
 		}else {myselection["oxytest"] = "neg";$('#oxytext').text("Oxycodone Test Negative");}
 		
-			console.log (JSON.stringify(myselection));
+			//console.log (JSON.stringify(myselection));
 		
 		
 	var diagmsg = " ";
@@ -276,7 +286,7 @@ jQuery(document).ready( function($){
 		}
 	
 	}
-	console.log ( "All opiates trigers" + JSON.stringify(opiateresults));
+	//console.log ( "All opiates trigers" + JSON.stringify(opiateresults));
 	
 	
 	//set up variuables for opiates
@@ -364,7 +374,7 @@ jQuery(document).ready( function($){
 	//else if ( myselection["oxytest"] == "neg" && ( myselection["oxycodtake"] == "pos" || myselection["oxymorphtake"] == "pos" ) ) console.log ( JSON.stringify(oxyresults["Unexpected"]));
 	//else if ( myselection["oxytest"] == "neg" && ( myselection["oxycodtake"] == "neg" && myselection["oxymorphtake"] == "neg" ) ) console.log ( JSON.stringify(oxyresults["Expected"]));
 	
-	console.log(diagmsg);
+	//console.log(diagmsg);
 		
 	$("#Oxycodone").removeClass("hidden");	
 	if ( myselection["oxytest"] == "pos" && ( myselection["oxycodtake"] == "pos" || myselection["oxymorphtake"] == "pos" ) ) 
@@ -378,7 +388,7 @@ jQuery(document).ready( function($){
 		
 		
 	
-	var druglist = ["heroin", "codeine", "hydrocod", "hydromor"];	outerindex = druglist.length;
+	var druglist = ["heroin", "codeine", "hydrocod", "hydromor", "morphine"];	outerindex = druglist.length;
 	
 	while (outerindex--) {
 	   drugname = druglist[outerindex];
@@ -391,16 +401,17 @@ jQuery(document).ready( function($){
 			  if (risklist[drugname][ijk][drugname+"take"] == myselection[drugname+"take"] && risklist[drugname][ijk]["opiatetest"] == myselection["opiatetest"]) {
 				   diagmsg += " \n " + drugname +" is " + risklist[drugname][ijk]["opiatemsg"];
 				   $("#"+drugname).removeClass("hidden");
-				  $("#"+drugname).find('.result-2').html( risklist[drugname][ijk]["opiatemsg"] );
-				  if ( risklist[drugname][ijk]["opiatemsg"].indexOf("Possible") > -1 ) { $("#"+drugname).find('.result-1').html("Possible");$("#"+drugname).css({ "color": 'blue'})}
-				  else if ( risklist[drugname][ijk]["opiatemsg"].indexOf("Unexpected") > -1 ) { $("#"+drugname).find('.result-1').html("Unexpected");$("#"+drugname).css({ "color": 'red'})}
-				  else if ( risklist[drugname][ijk]["opiatemsg"].indexOf("Expected") > -1 ) { $("#"+drugname).find('.result-1').html("Expected");$("#"+drugname).css({ "color": 'green'})}
+				    $("#"+drugname).find('.testrec').html(risklist[drugname][ijk]["testrec"]);$("#"+drugname).find('.result-1').html(risklist[drugname][ijk]["interp"]);
+				  $("#"+drugname).find('.result-2').html( risklist[drugname][ijk]["expl"] );
+				  if ( risklist[drugname][ijk]["opiatemsg"].indexOf("Possible") > -1 ) {$("#"+drugname).css({ "color": 'blue'})}
+				  else if ( risklist[drugname][ijk]["opiatemsg"].indexOf("Unexpected") > -1 ) { $("#"+drugname).css({ "color": 'red'})}
+				  else if ( risklist[drugname][ijk]["opiatemsg"].indexOf("Expected") > -1 ) { $("#"+drugname).css({ "color": 'green'})}
 			   } 
 			}
 		}
 	}		
 	
-	druglist = ["oxymorph", "oxycod"];	outerindex = druglist.length;
+	druglist = [ "oxymorph", "oxycod"];	outerindex = druglist.length;
 	var opiatediag;
 	var oxydiag;
 	
@@ -413,21 +424,21 @@ jQuery(document).ready( function($){
 			while (ijk--) {
 				//alert(JSON.stringify(risklist["meperidine"][ijk]));
 			  if (risklist[drugname][ijk][drugname+"take"] == myselection[drugname+"take"] && risklist[drugname][ijk]["opiatetest"] == myselection["opiatetest"]) {
-				opiatediag = risklist[drugname][ijk]["opiatemsg"] ;
-				console.log("opiate message for oxy is  " + diagmsg);
+				opiatediag = risklist[drugname][ijk]["expl"] ;
+				//console.log("opiate message for oxy is  " + diagmsg);
 			  }
 			   if (risklist[drugname][ijk][drugname+"take"] == myselection[drugname+"take"] && risklist[drugname][ijk]["oxytest"] == myselection["oxytest"]) {
 				   //diagmsg += " \n " + drugname +" is " + risklist[drugname][ijk]["opiatemsg"];
 				   $("#"+drugname).removeClass("hidden");
-				   console.log("oxy message1 for oxy is  " + risklist[drugname][ijk]["oxymsg"]);
-				    oxydiag = risklist[drugname][ijk]["oxymsg"];
+				   //console.log("oxy message1 for oxy is  " + risklist[drugname][ijk]["oxymsg"]);
+				    oxydiag = risklist[drugname][ijk]["expl"];
 				  
 				  // ( risklist[drugname][ijk]["opiatemsg"].indexOf("Possible") > -1 ) { $("#"+drugname).find('.result-1').html("Possible");$("#"+drugname).css({ "color": 'blue'})}
 				  //else if ( risklist[drugname][ijk]["opiatemsg"].indexOf("Unexpected") > -1 ) { $("#"+drugname).find('.result-1').html("Unexpected");$("#"+drugname).css({ "color": 'red'})}
 				  //else if ( risklist[drugname][ijk]["opiatemsg"].indexOf("Expected") > -1 ) { $("#"+drugname).find('.result-1').html("Expected");$("#"+drugname).css({ "color": 'green'})}
-				  if ( risklist[drugname][ijk]["oxymsg"].indexOf("Possible") > -1 ) { $("#"+drugname).find('.result-1').html("Possible");$("#"+drugname).css({ "color": 'blue'})}
-				  else if ( risklist[drugname][ijk]["oxymsg"].indexOf("Unexpected") > -1 ) { $("#"+drugname).find('.result-1').html("Unexpected");$("#"+drugname).css({ "color": 'red'})}
-				  else if ( risklist[drugname][ijk]["oxymsg"].indexOf("Expected") > -1 ) { $("#"+drugname).find('.result-1').html("Expected");$("#"+drugname).css({ "color": 'green'})}
+				  if ( risklist[drugname][ijk]["interp"].indexOf("Possible") > -1 ) { $("#"+drugname).find('.testrec').html(risklist[drugname][ijk]["testrec"]);$("#"+drugname).find('.result-1').html("Possible");$("#"+drugname).css({ "color": 'blue'})}
+				  else if ( risklist[drugname][ijk]["interp"].indexOf("Unexpected") > -1 ) { $("#"+drugname).find('.testrec').html(risklist[drugname][ijk]["testrec"]);$("#"+drugname).find('.result-1').html("Unexpected");$("#"+drugname).css({ "color": 'red'})}
+				  else if ( risklist[drugname][ijk]["interp"].indexOf("Expected") > -1 ) { $("#"+drugname).find('.testrec').html(risklist[drugname][ijk]["testrec"]);$("#"+drugname).find('.result-1').html("Expected");$("#"+drugname).css({ "color": 'green'})}
 			   } 
 			}
 		}
@@ -439,13 +450,18 @@ jQuery(document).ready( function($){
 	
 	while (outerindex--) {
 	   drugname = druglist[outerindex];
-		
+		ijk = risklist[drugname].length;
 		if (myselection[drugname+"take"] == "pos")
 		{ 
-
+		   while (ijk--) {
+				//alert(JSON.stringify(risklist["meperidine"][ijk]));
+			  if (risklist[drugname][ijk][drugname+"take"] == myselection[drugname+"take"]&& risklist[drugname][ijk]["opiatetest"] == myselection["opiatetest"]) {
+			     $("#"+drugname).find('.testrec').html( risklist[drugname][ijk]["testrec"]);
+				 $("#"+drugname).find('.result-2').html( risklist[drugname][ijk]["expl"] );
+				 $("#"+drugname).find('.result-1').html( risklist[drugname][ijk]["interp"] );}
+			}
 		   $("#"+drugname).removeClass("hidden");
-		  $("#"+drugname).find('.result-2').html( 'Is not detectable using a Screening UDT which often includes tests for "Opiates" or "Oxycodone"' );
-		  $("#"+drugname).find('.result-1').html("If confirmation is needed, order a specific confirmatory test for this specific drug.");$("#"+drugname).css({ "color": 'orange'})
+		   $("#"+drugname).css({ "color": 'orange'})
 	 
 		}
 	}		

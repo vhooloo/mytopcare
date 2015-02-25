@@ -22,7 +22,7 @@ Template Name: interpret_opiates
 
                                 <div class="">									
 								<h1><b><?php the_title(); ?></b></h1>
-								<span style="position: absolute; right:50px;Top:50px;"><a href="http://mytopcare.org/udt-calculator/" title="Urine Drug Test (UDT) Decision Support1">Return to UDT Decision Support</a></span>								
+								<span style="position: absolute; right:50px;Top:50px;"><a href="<?php echo site_url();?>/?page_id=1222" title="Urine Drug Test (UDT) Decision Support">Return to UDT Decision Support</a></span>								
 								</div>
 
                             <!--</header> <!-- end article header -->
@@ -33,7 +33,7 @@ Template Name: interpret_opiates
                                     <form id='utd-calculator' class='form-inline' method='POST'>
 									
 									
-									These recommendations are general, however all lab tests are different. Contact your local Clinical Pathology/Toxicology Laboratory directly if you have questions regarding interpretation of your patient’s UDT. <a  class="noprint" href="http://mytopcare.org/udt-calculator/screening-panels/">What is an opiates screening test?</a> 
+									These recommendations are general, however all lab tests are different. Contact your local Clinical Pathology/Toxicology Laboratory directly if you have questions regarding interpretation of your patient’s UDT. <a  class="noprint" href="http://mytopcare.org/udt-calculator/screening-panels/">What is an opiates screening panel?</a> 
 									
 									<div class="row">
 									<div class="col-md-8">
@@ -110,7 +110,7 @@ Template Name: interpret_opiates
 										<li class="drug ui-state-default"  name = "herointake" value="MAM6"  ><span>Heroin-MAM6</span></li>										
 										<li class="drug ui-state-default"  name = "meptake" value="Meperidine" data-toggle="tooltip" data-placement="top" title="Demerol" ><span>Meperidine</span></li>
 										<li class="drug ui-state-default"  name = "methtake" value="Methadone" data-toggle="tooltip" data-placement="top" title="Symoron, Dolophine, Amidone, Methadose, Physeptone, Heptadon" ><span>Methadone</span></li>
-										<!--li class="drug ui-state-default"  name = "morphinetake" value="Morphine"><span>Morphine</span></li-->
+										<li class="drug ui-state-default"  name = "morphinetake" value="Morphine"><span>Morphine</span></li>
 										<li class="drug ui-state-default"  name = "oxycodtake" value="Oxycodone" data-toggle="tooltip" data-placement="top" title="Roxicodone, Oxycontin, Oxecta, OxyIR, Endone, Oxynorm, Tylox, Percodan"  ><span>Oxycodone</span></li>
 										<li class="drug ui-state-default"  name = "oxymorphtake" value="Oxymorphone" data-toggle="tooltip" data-placement="top" title="Opana, Opana ER, Opana IR, Numorphan, Numorphan HCl" ><span>Oxymorphone</span></li>										
 										<!--<li class="ui-state-default" value="PCP"><span>PCP</span></li>-->
@@ -134,11 +134,11 @@ Template Name: interpret_opiates
 																			</div></div>
 									
 									<div class="row">
-									<div class="col-md-6">
+									<div class="col-md-4">
 									
 									<div id='results' class="clearfix hidden">
 									
-									<div style="font-size:18px; font-weight:bold; position:relative; top:12px; margin-bottom: 36px;"> How do I interpret the results of the UDT? </div>
+									<div style="font-size:18px; font-weight:bold; position:relative; top:12px; <!--margin-bottom: 36px;-->"> How do I interpret the results of the UDT? </div>
                                         <table id='opiatesDrugs' class="tablepress">	
                                             <thead style='height: 60px;'>
                                                 <tr class="odd">
@@ -277,16 +277,17 @@ Template Name: interpret_opiates
                                         </table>
 									</div></div>
 									
-									<div class="col-md-6">
+									<div class="col-md-8">
 									
 									<div id='results-drugs' class="clearfix hidden">
-									<div style="font-size:18px; font-weight:bold; position:relative; top:12px"> What tests should I order to look for the drugs my patient is taking? </div>
+									<div style="font-size:18px; font-weight:bold; position:relative; top:12px;margin-bottom: 45px;"> What tests should I order to look for the drugs my patient is taking? </div>
                                         <table id='opiatesDrugsTaken' class="tablepress">	
                                             <thead style='height: 60px;'>
                                                 <tr class="odd">
                                                     <th style='width: 100px;'><div>Medications/Drugs taken</div></th>
 													<!--<th class="column-3" style='min-width: 160px;'>Inputs</th>-->
                                                     <th class="column-3" style='width: 120px;'>Test Recommended</th>
+													<th class="column-3" style='width: 120px;'>Interpretation</th>
 													<!--th class="column-3" style='min-width: 480px;'>Interpretation if<br/>NOT taking drug</th-->
                                                     <th class="column-3" style='width: 200px;'>Explanation</th>
 													<th class="column-3" style='width: 80px;'>False Positives</th>
@@ -304,9 +305,10 @@ Template Name: interpret_opiates
 															</p>
 														</div>	
 													</td>-->
+													<td class='testrec' ><!--Test Rec--></td>		
                                                     <td class='result-1' ><!--Should be positive--></td>
 													<td class='result-2' ><!--Should be positive--></td>
-													<td class='false-positives' >tramadol; other opioids  </td>
+													<td class='false-positives' >NA  </td>
                                              </tr>
 											<tr class="even hidden" id="codeine">
                                                     <td class="column-1">Codeine</td>
@@ -318,10 +320,11 @@ Template Name: interpret_opiates
 																Unsure<input type="radio" class='dst3-0' name="Codeine_take" value="0">
 															</p>
 														</div>	
-													</td>-->														
+													</td>-->
+													<td class='testrec' ><!--Test Rec--></td>															
                                                     <td class='result-1'></td>
 													<td class='result-2'></td>
-													<td class='false-positives' > Poppy Seeds (more than 3 Bagels) </td>
+													<td class='false-positives' > >3 Poppy seed bagels, naloxone, dextromethorophan; dipnehydramine; fluoroquinolones; quinine, rifampin </td>
                                                 </tr>
 												<tr class="even hidden" id="fent">
                                                     <td class="column-1">Fentanyl</td>
@@ -334,9 +337,10 @@ Template Name: interpret_opiates
 															</p>
 														</div>													
 													</td>-->
+													<td class='testrec' ><!--Test Rec--></td>		
                                                     <td class='result-1'></td>
 													<td class='result-2'></td>
-													<td class='false-positives' >  </td>
+													<td class='false-positives' > NA </td>
                                                 </tr>
 												
 											<tr class="odd  hidden" id="heroin">
@@ -350,9 +354,10 @@ Template Name: interpret_opiates
 															</p>
 														</div>	
 													</td>-->
+													<td class='testrec' ><!--Test Rec--></td>		
                                                     <td class='result-1'></td>
 													<td class='result-2'></td>
-													<td class='false-positives' >  </td>
+													<td class='false-positives' > >3 Poppy seed bagels, naloxone, dextromethorophan; dipnehydramine; fluoroquinolones; quinine, rifampin </td>
                                                     <!--td class='text-right'class="even disabled"></td-->
                                                 </tr>		
 											 <tr class="even hidden" id="hydrocod">
@@ -365,10 +370,11 @@ Template Name: interpret_opiates
 																Unsure<input type="radio" class='dst3-0' name="Hydrocodone_take" value="0">
 															</p>
 														</div>	
-													</td>-->														
+													</td>-->		
+													<td class='testrec' ><!--Test Rec--></td>															
                                                     <td class='result-1'></td>
 													<td class='result-2'></td>
-													<td class='false-positives' >  </td>
+													<td class='false-positives' > >3 Poppy seed bagels, naloxone, dextromethorophan; dipnehydramine; fluoroquinolones; quinine, rifampin </td>
                                                 </tr>
                                                 <tr class="odd hidden" id="hydromor">
                                                     <td class="column-1">Hydromorphone</td>
@@ -380,10 +386,11 @@ Template Name: interpret_opiates
 																Unsure<input type="radio" class='dst3-0' name="Hydromorphone_take" value="0">
 															</p>
 														</div>	
-													</td>-->														
+													</td>-->		
+													<td class='testrec' ><!--Test Rec--></td>															
                                                     <td class='result-1'></td>
 													<td class='result-2'></td>
-													<td class='false-positives' >  </td>
+													<td class='false-positives' > >3 Poppy seed bagels, naloxone, dextromethorophan; dipnehydramine; fluoroquinolones; quinine, rifampin </td>
                                                 </tr>
 												
 												<tr class="even  hidden" id="mep">
@@ -396,10 +403,11 @@ Template Name: interpret_opiates
 																Unsure<input type="radio" class='dst3-0' name="Meperidine_take" value="0">
 															</p>
 														</div>	
-													</td>-->														
+													</td>-->
+													<td class='testrec' ><!--Test Rec--></td>															
                                                     <td class='result-1'></td>
 													<td class='result-2'></td>
-													<td class='false-positives' >  </td>
+													<td class='false-positives' > NA </td>
                                                     <!--td class='text-right' class="odd disabled"></td-->
                                                 </tr>
 											<tr class="odd hidden" id="meth">
@@ -412,12 +420,32 @@ Template Name: interpret_opiates
 																Unsure<input type="radio" class='dst3-0' name="Methadone_take" value="0">
 															</p>
 														</div>	
-													</td>-->														
+													</td>-->				
+													<td class='testrec' ><!--Test Rec--></td>															
                                                     <td class='result-1'></td>
+													
 													<td class='result-2'></td>
-													<td class='false-positives' > 6 diphenhydramine; doxylamine; clomipramine;chlorpromazine;quitiapine; thioridazine; tramadol; verapamil </td>
+													<td class='false-positives' > NA </td>
                                              </tr>	
                                                
+											 <tr class="odd hidden" id="morphine">
+                                                    <td class="column-1">Morphine</td>
+                                                    <!--<td class="column-2">													
+														<div class="take"><p>Taking Drug</p>
+															<p>
+																Y  <input type="radio" class='dst3-2' name="Methadone_take" value="2">
+																N  <input type="radio" class='dst3-1' name="Methadone_take" value="1">
+																Unsure<input type="radio" class='dst3-0' name="Methadone_take" value="0">
+															</p>
+														</div>	
+													</td>-->				
+													<td class='testrec' ><!--Test Rec--></td>															
+                                                    <td class='result-1'></td>
+													
+													<td class='result-2'></td>
+													<td class='false-positives' > >3 Poppy seed bagels, naloxone, dextromethorophan; dipnehydramine; fluoroquinolones; quinine, rifampin</td>
+                                             </tr>	
+											 
 											 <tr class="even hidden" id="oxycod">
                                                     <td class="column-1">Oxycodone</td>
                                                     <!--<td class="column-2">													
@@ -428,10 +456,12 @@ Template Name: interpret_opiates
 																Unsure<input type="radio" class='dst3-0' name="Oxymorphone_take" value="0">
 															</p>
 														</div>		
-													</td>-->														
+													</td>-->					
+													<td class='testrec' ><!--Test Rec--></td>															
                                                     <td class='result-1'></td>
+													
 													<td class='result-2'></td>
-													<td class='false-positives' > naloxone, dextromethorophan; dipnehydramine; fluoroquinolones; quinine, rifampin  </td>
+													<td class='false-positives' > >3 Poppy seed bagels, naloxone, dextromethorophan; dipnehydramine; fluoroquinolones; quinine, rifampin </td>
                                                 </tr>	
 											 <tr class="even hidden" id="oxymorph">
                                                     <td class="column-1">Oxymorphone</td>
@@ -443,8 +473,10 @@ Template Name: interpret_opiates
 																Unsure<input type="radio" class='dst3-0' name="Oxymorphone_take" value="0">
 															</p>
 														</div>		
-													</td>-->														
+													</td>-->		
+													<td class='testrec' ><!--Test Rec--></td>													
                                                     <td class='result-1'></td>
+													
 													<td class='result-2'></td>
 													<td class='false-positives' >  </td>
                                                 </tr>	
@@ -468,7 +500,7 @@ Template Name: interpret_opiates
                 </div>
 										
 									</form>		
-							<span style="position: absolute; right:50px;bottom:5px;"><a href="http://mytopcare.org/udt-calculator/" title="Urine Drug Test (UDT) Decision Support">Return to UDT Decision Support</a></span><br/>										
+							<span style="position: absolute; right:50px;bottom:5px;"><a href="<?php echo site_url();?>/?page_id=1222" title="Urine Drug Test (UDT) Decision Support">Return to UDT Decision Support</a></span><br/>										
 								</div>		
 					
 							</div>
